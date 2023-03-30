@@ -5,8 +5,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontSize: {
+      lg: '1.125rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
+      '3xl': '3.875rem',
+    },
+    extend: {
+      colors: {
+        'sand-brown': '#D1A479',
+      },      
+      dropShadow: {
+        'btn' : '4px 3px 4px rgba(0, 0, 0, 0.25)'
+        
+      },
+    },
   },
   plugins: [],
 }
-

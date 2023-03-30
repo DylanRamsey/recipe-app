@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import "/Users/dylanramsey/Sites/rt-recipes/src/assets/sass/main.scss"
+import AppTitle from './components/atoms/AppTitle'
+import UtilityRow from './components/molecules/UtilityRow'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <h1 className="bg-neutral-700	">this is an app</h1>
+    <div data-element="app">
+      <div data-element="app__wrapper" className="App container mx-auto">
+        <AppTitle />
+        <UtilityRow />
+      </div>
     </div>
   )
 }
