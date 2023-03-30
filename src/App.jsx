@@ -6,7 +6,7 @@ import UtilityRow from './components/molecules/UtilityRow'
 function App() {
   return (
     <div data-element="app">
-      <div data-element="app__wrapper" className="App container mx-auto">
+      <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
         <UtilityRow />
       </div>

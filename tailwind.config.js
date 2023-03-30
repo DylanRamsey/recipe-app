@@ -14,6 +14,7 @@ export default {
     extend: {
       colors: {
         'sand-brown': '#D1A479',
+        'sand-brown-hov': '#9d734b',
       },      
       dropShadow: {
         'btn' : '4px 3px 4px rgba(0, 0, 0, 0.25)'
