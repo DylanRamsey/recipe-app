@@ -2,6 +2,7 @@ import { useState } from 'react'
 import "/Users/dylanramsey/Sites/rt-recipes/src/assets/sass/main.scss"
 import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
+import Recipes from './components/organism/Recipes'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
         <UtilityRow />
+        <Recipes />
       </div>
     </div>
   )

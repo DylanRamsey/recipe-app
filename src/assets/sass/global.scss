@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body {
-  background: #FFDFC1;
-  
+  background: #FFDFC1;  
+}
+
+[data-element="select-dropdown"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+    background-image: url('/Users/dylanramsey/Sites/rt-recipes/src/assets/icons/down-chevron.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
 }
