@@ -3,6 +3,7 @@ import "/Users/dylanramsey/Sites/rt-recipes/src/assets/sass/main.scss"
 import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
+import Modal from './components/organism/Modal'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <AppTitle />
         <UtilityRow />
         <Recipes />
-      </div>
+      </div>      
     </div>
   )
 }
