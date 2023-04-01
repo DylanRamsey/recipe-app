@@ -9,7 +9,7 @@ function App() {
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
         <UtilityRow data={data} />
-        <Recipes />
+        <Recipes data={data} />
       </div>
     </div>
   )

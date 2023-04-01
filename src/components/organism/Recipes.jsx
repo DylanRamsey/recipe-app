@@ -1,20 +1,14 @@
 import RecipeCard from "../molecules/RecipeCard"
 import Modal from "./Modal"
-function Recipes() {
+function Recipes({data}) {
   return (
     <div className="grid grid-cols-3 justify-items-center">
-      <RecipeCard
-        recipeTitle="Alfredo Sauce"
-        recipeDescription="Makes 4-6 large portions"
-      />
-      <RecipeCard
-        recipeTitle="Alfredo Sauce"
-        recipeDescription="Makes 4-6 large portions"
-      />
-      <RecipeCard
-        recipeTitle="Alfredo Sauce"
-        recipeDescription="Makes 4-6 large portions"
-      />        
+      {data.map((recipe) => (      
+        <RecipeCard
+          recipeTitle={recipe.name}
+          recipeDescription={recipe.description}
+        />
+      ))}
       {/*<Modal modalType="addRecipe" /> */}
     </div>
   )
