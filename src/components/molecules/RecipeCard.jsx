@@ -1,6 +1,15 @@
 import Button from "../atoms/Button"
+import { useState } from "react";
+import Modal from "../organism/Modal";
+function RecipeCard({recipeTitle, recipeDescription, viewRecipeModal, setViewRecipeModal}) {
 
-function RecipeCard({recipeTitle, recipeDescription}) {
+  console.log(viewRecipeModal);
+  function viewRecipe(){
+    console.log(recipeTitle)
+    setViewRecipeModal(state=>!state);
+    console.log(viewRecipeModal);
+  }
+
   return (
     <div className="w-[21.875rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between">
       <div>
@@ -12,6 +21,7 @@ function RecipeCard({recipeTitle, recipeDescription}) {
           buttonText="view more"
           buttonColor="bg-sand-brown"
           buttonHover="hover:bg-sand-brown-hov"
+          buttonClick={viewRecipe}
         />
         <Button 
           buttonText="remove" 
