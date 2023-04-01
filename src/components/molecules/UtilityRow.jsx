@@ -1,7 +1,7 @@
 import Button from '../atoms/Button'
 import Dropdown from '../atoms/Dropdown';
 
-function UtilityRow() {
+function UtilityRow({data}) {
   return (
     <div className="flex justify-between w-[26rem] mx-auto">
       <Button 
@@ -9,7 +9,9 @@ function UtilityRow() {
         buttonColor="bg-sand-brown"
         buttonHover="hover:bg-sand-brown-hov"
       />
-      <Dropdown />
+      <Dropdown
+        data={data}
+      />
     </div>
   )
 }
