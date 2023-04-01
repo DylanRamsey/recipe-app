@@ -7,8 +7,8 @@ export default {
   theme: {
     fontSize: {
       lg: '1.125rem',
-      xl: '1.5rem',
-      '2xl': '2rem',
+      xl: '1.5rem', // 24px
+      '2xl': '2rem', //32px
       '3xl': '3.875rem',
     },
     extend: {
@@ -21,7 +21,7 @@ export default {
       },      
       dropShadow: {
         'btn': '4px 3px 4px rgba(0, 0, 0, 0.25)',
-        'card': '0px 4px 4px rgba(0, 0, 0, 0.25)'
+        'default': '0px 4px 4px rgba(0, 0, 0, 0.25)'
       },
     },
   },

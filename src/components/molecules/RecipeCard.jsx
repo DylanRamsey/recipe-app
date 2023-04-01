@@ -2,7 +2,7 @@ import Button from "../atoms/Button"
 
 function RecipeCard({recipeTitle, recipeDescription}) {
   return (
-    <div className="w-[21.875rem] h-[18.75rem] px-8 py-6 bg-cream rounded-lg drop-shadow-card max-w-full mt-10 flex flex-col justify-between">
+    <div className="w-[21.875rem] h-[18.75rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between">
       <div>
         <h2 className="text-2xl">{recipeTitle}</h2>
         <h3 className="text-xl">{recipeDescription}</h3>

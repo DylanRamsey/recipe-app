@@ -15,7 +15,7 @@ function Recipes() {
         recipeTitle="Alfredo Sauce"
         recipeDescription="Makes 4-6 large portions"
       />        
-      <Modal modalType="viewRecipe" />    
+      <Modal modalType="addRecipe" />
     </div>
   )
 }
