@@ -31,6 +31,8 @@ function Recipes({data}) {
         <Modal 
           modalType="viewRecipe" 
           afterSetModalRecipeTitle={afterSetModalRecipeTitle}
+          viewRecipeModal={viewRecipeModal}
+          setViewRecipeModal={setViewRecipeModal}
         /> 
       }
     </div>
