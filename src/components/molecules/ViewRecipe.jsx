@@ -1,6 +1,8 @@
-function ViewRecipe() {
+function ViewRecipe({afterSetModalRecipeTitle}) {
   return (
-    <div>ViewRecipe</div>
+    <div>
+      {afterSetModalRecipeTitle}
+    </div>
   )
 }
 

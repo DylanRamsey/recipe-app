@@ -1,20 +1,25 @@
 import Button from "../atoms/Button"
-import { useState } from "react";
-import Modal from "../organism/Modal";
-function RecipeCard({recipeTitle, recipeDescription, viewRecipeModal, setViewRecipeModal}) {
+
+function RecipeCard({recipeTitle, recipeDescription, viewRecipeModal, setViewRecipeModal, modalRecipeTitle, setModalRecipeTitle}) {
 
   console.log(viewRecipeModal);
   function viewRecipe(){
-    console.log(recipeTitle)
     setViewRecipeModal(state=>!state);
-    console.log(viewRecipeModal);
+    setModalRecipeTitle(recipeTitle);
+    //const UpdatedRecipetitle = recipeTitle;
+    //console.log(UpdatedRecipetitle);
+    /* Set recipe title */
+    /* Set recipe Description */
+    /* Set recipe Ingredients */
+    /* Set recipe Steps */
+
   }
 
   return (
     <div className="w-[21.875rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between">
       <div>
-        <h2 className="text-2xl leading-tight	">{recipeTitle}</h2>
-        <h3 className="text-lg mb-4 leading-tight	">{recipeDescription}</h3>
+        <h2 className="text-2xl leading-tight">{recipeTitle}</h2>
+        <h3 className="text-lg mb-4 leading-tight">{recipeDescription}</h3>
       </div>
       <div className="flex gap-x-4">
         <Button 
