@@ -1,6 +1,6 @@
 import Button from "../atoms/Button"
 
-function ViewRecipe({afterSetModalRecipeTitle, viewRecipeModal, setViewRecipeModal}) {
+function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModalRecipeDesc, afterSetModalRecipeIngreds}) {
 
   function closeModal() {
     setViewRecipeModal(false);
@@ -8,7 +8,17 @@ function ViewRecipe({afterSetModalRecipeTitle, viewRecipeModal, setViewRecipeMod
 
   return (
     <div>
-      <h2 class="text-2xl leading-tight">{afterSetModalRecipeTitle}</h2>
+      <h2 className="text-2xl leading-tight">{afterSetModalRecipeTitle}</h2>
+      <h3 className="text-lg leading-tight">{afterSetModalRecipeDesc}</h3>
+      <ul>
+        
+          {afterSetModalRecipeIngreds.forEach((ingredient) => {
+              console.log(ingredient)
+          })}          
+      </ul>
+      <p></p>
+
+      <h3 className="text-xl">Ingredients</h3>
       <div className="flex gap-x-4">
         <Button 
           buttonText="edit"

@@ -1,18 +1,23 @@
 import Button from "../atoms/Button"
 
-function RecipeCard({recipeTitle, recipeDescription, viewRecipeModal, setViewRecipeModal, modalRecipeTitle, setModalRecipeTitle}) {
+function RecipeCard({
+      recipeTitle, 
+      recipeDescription,
+      recipeIngreds,
+      viewRecipeModal, 
+      setViewRecipeModal, 
+      setModalRecipeTitle, 
+      setModalRecipeDesc,
+      setModalRecipeIngreds
+    }) 
+  {
 
   console.log(viewRecipeModal);
   function viewRecipe(){
     setViewRecipeModal(state=>!state);
     setModalRecipeTitle(recipeTitle);
-    //const UpdatedRecipetitle = recipeTitle;
-    //console.log(UpdatedRecipetitle);
-    /* Set recipe title */
-    /* Set recipe Description */
-    /* Set recipe Ingredients */
-    /* Set recipe Steps */
-
+    setModalRecipeDesc(recipeDescription);
+    setModalRecipeIngreds(recipeIngreds);
   }
 
   return (
