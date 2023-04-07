@@ -14,7 +14,6 @@ function RecipeCard({
     }) 
   {
 
-  console.log(viewRecipeModal);
   function viewRecipe(){
     setViewRecipeModal(state=>!state);
     setModalRecipeTitle(recipeTitle);
