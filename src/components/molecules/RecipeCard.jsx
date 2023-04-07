@@ -5,7 +5,6 @@ function RecipeCard({
       recipeDescription,
       recipeIngreds,
       recipeSteps,
-      viewRecipeModal, 
       setViewRecipeModal, 
       setModalRecipeTitle, 
       setModalRecipeDesc,
@@ -23,7 +22,7 @@ function RecipeCard({
   }
 
   return (
-    <div className="w-[21.875rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between">
+    <div className={`w-[21.875rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between`}>
       <div>
         <h2 className="text-2xl leading-none mb-2">{recipeTitle}</h2>
         <h3 className="text-lg mb-4 leading-tight">{recipeDescription}</h3>

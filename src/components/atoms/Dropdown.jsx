@@ -10,7 +10,7 @@ function Dropdown({data, selectedCategory, setSelectedCategory}) {
     <>
       <form action="">
         <select data-element="select-dropdown" value={selectedCategory} onChange={handleCategoryChange} className="px-2 py-2 h-10 rounded-md capitalize w-64 max-w-full" name="" id="">
-          <option value="all">All</option>
+          <option value="All">All</option>
           {categories.map((category) => (
           <option key={category} value={category}>
             {category}
@@ -18,7 +18,6 @@ function Dropdown({data, selectedCategory, setSelectedCategory}) {
         ))}
         </select>
       </form>
-      {selectedCategory}
     </>
   )
 }

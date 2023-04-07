@@ -10,7 +10,7 @@ function App() {
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
         <UtilityRow data={data} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-        <Recipes data={data} />
+        <Recipes data={data} selectedCategory={selectedCategory} />
       </div>
     </div>
   )

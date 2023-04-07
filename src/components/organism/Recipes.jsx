@@ -1,7 +1,7 @@
 import RecipeCard from "../molecules/RecipeCard"
 import { useState } from "react";
 import Modal from "./Modal"
-function Recipes({data}) {
+function Recipes({data, selectedCategory}) {
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [modalRecipeTitle, setModalRecipeTitle] = useState('');
   const afterSetModalRecipeTitle = modalRecipeTitle;
@@ -14,8 +14,9 @@ function Recipes({data}) {
 
   return (
     <div className="grid grid-cols-4 justify-items-center">
-      {data.map((recipe) => (      
-        <RecipeCard
+      {data.map((recipe) => {
+        if(recipe.category == selectedCategory || selectedCategory == 'All')
+        return <RecipeCard
           key={recipe.id}
           recipeTitle={recipe.name}
           recipeDescription={recipe.description}
@@ -28,7 +29,7 @@ function Recipes({data}) {
           setModalRecipeIngreds={setModalRecipeIngreds}
           setModalRecipeSteps={setModalRecipeSteps}
         />
-      ))}
+      })}
       { viewRecipeModal == true && 
         <Modal 
           modalType="viewRecipe" 
