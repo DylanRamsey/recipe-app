@@ -1,7 +1,7 @@
 import AddRecipe from "../molecules/AddRecipe"
 import ViewRecipe from "../molecules/ViewRecipe"
 import closeIcon from "../../assets/icons/modal-close.svg"
-function Modal({modalType, afterSetModalRecipeTitle, afterSetModalRecipeDesc, viewRecipeModal, setViewRecipeModal, afterSetModalRecipeIngreds}) {
+function Modal({modalType, afterSetModalRecipeTitle, afterSetModalRecipeDesc, viewRecipeModal, setViewRecipeModal, afterSetModalRecipeIngreds, afterSetModalRecipeSteps}) {
 
   function closeModal() {
     if(modalType === 'viewRecipe'){
@@ -36,6 +36,7 @@ function Modal({modalType, afterSetModalRecipeTitle, afterSetModalRecipeDesc, vi
                       afterSetModalRecipeTitle={afterSetModalRecipeTitle}
                       afterSetModalRecipeDesc={afterSetModalRecipeDesc}
                       afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
+                      afterSetModalRecipeSteps={afterSetModalRecipeSteps}
                     />
                   }                  
                 </div>

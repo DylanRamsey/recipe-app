@@ -9,20 +9,24 @@ function Recipes({data}) {
   const afterSetModalRecipeDesc = modalRecipeDesc;
   const [modalRecipeIngreds, setModalRecipeIngreds] = useState('');
   const afterSetModalRecipeIngreds = modalRecipeIngreds;
+  const [modalRecipeSteps, setModalRecipeSteps] = useState('');
+  const afterSetModalRecipeSteps = modalRecipeSteps;
 
   return (
-    <div className="grid grid-cols-3 justify-items-center">
+    <div className="grid grid-cols-4 justify-items-center">
       {data.map((recipe) => (      
         <RecipeCard
           key={recipe.id}
           recipeTitle={recipe.name}
           recipeDescription={recipe.description}
           recipeIngreds={recipe.ingredients}
+          recipeSteps={recipe.steps}
           viewRecipeModal={viewRecipeModal}
           setViewRecipeModal={setViewRecipeModal}
           setModalRecipeTitle={setModalRecipeTitle}
           setModalRecipeDesc={setModalRecipeDesc}
           setModalRecipeIngreds={setModalRecipeIngreds}
+          setModalRecipeSteps={setModalRecipeSteps}
         />
       ))}
       { viewRecipeModal == true && 
@@ -33,6 +37,7 @@ function Recipes({data}) {
           setViewRecipeModal={setViewRecipeModal}
           afterSetModalRecipeDesc={afterSetModalRecipeDesc}
           afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
+          afterSetModalRecipeSteps={afterSetModalRecipeSteps}
         /> 
       }
     </div>
