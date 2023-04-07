@@ -4,11 +4,12 @@ import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
-        <UtilityRow data={data} />
+        <UtilityRow data={data} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <Recipes data={data} />
       </div>
     </div>

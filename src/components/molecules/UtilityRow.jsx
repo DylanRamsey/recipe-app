@@ -1,7 +1,7 @@
 import Button from '../atoms/Button'
 import Dropdown from '../atoms/Dropdown';
 
-function UtilityRow({data}) {
+function UtilityRow({data, selectedCategory, setSelectedCategory}) {
   return (
     <div className="flex justify-between w-[26rem] mx-auto">
       <Button 
@@ -11,6 +11,8 @@ function UtilityRow({data}) {
       />
       <Dropdown
         data={data}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
     </div>
   )

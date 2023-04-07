@@ -1,10 +1,7 @@
 import { useState } from "react";
 
-function Dropdown({data}) {
+function Dropdown({data, selectedCategory, setSelectedCategory}) {
   const categories = Array.from(new Set(data.map((recipe) => recipe.category)));
-
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
