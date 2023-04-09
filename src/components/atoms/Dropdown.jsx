@@ -1,7 +1,5 @@
-import { useState } from "react";
-
-function Dropdown({data, selectedCategory, setSelectedCategory}) {
-  const categories = Array.from(new Set(data.map((recipe) => recipe.category)));
+function Dropdown({recipes, selectedCategory, setSelectedCategory}) {
+  const categories = Array.from(new Set(recipes.map((recipe) => recipe.category)));
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
@@ -9,13 +7,13 @@ function Dropdown({data, selectedCategory, setSelectedCategory}) {
   return (
     <>
       <form action="">
-        <select data-element="select-dropdown" value={selectedCategory} onChange={handleCategoryChange} className="px-2 py-2 h-10 rounded-md capitalize w-64 max-w-full" name="" id="">
+        <select data-element="select-dropdown" value={selectedCategory} onChange={handleCategoryChange} className="drop-shadow-btn px-2 py-2 h-10 rounded-md capitalize w-64 max-w-full" name="">
           <option value="All">All</option>
           {categories.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </form>
     </>
