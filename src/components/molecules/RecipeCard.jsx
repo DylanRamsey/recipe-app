@@ -1,11 +1,13 @@
 import Button from "../atoms/Button"
 
 function RecipeCard({
+      key,
       recipeTitle, 
       recipeDescription,
       recipeIngreds,
       recipeSteps,
-      setViewRecipeModal, 
+      setViewRecipeModal,
+      setRemoveRecipeModal,
       setModalRecipeTitle, 
       setModalRecipeDesc,
       setModalRecipeIngreds,
@@ -13,12 +15,17 @@ function RecipeCard({
     }) 
   {
 
-  function viewRecipe(){
+  function viewRecipe() {
     setViewRecipeModal(state=>!state);
     setModalRecipeTitle(recipeTitle);
     setModalRecipeDesc(recipeDescription);
     setModalRecipeIngreds(recipeIngreds);
     setModalRecipeSteps(recipeSteps);
+  }
+
+  function removeRecipe() {
+    console.log(key);
+    setRemoveRecipeModal(state=>!state);
   }
 
   return (
@@ -39,6 +46,7 @@ function RecipeCard({
           buttonTextColor="text-white"
           buttonColor="bg-retro-red"
           buttonHover="hover:bg-retro-red-hov"
+          buttonClick={removeRecipe}
         />
       </div>
     </div>

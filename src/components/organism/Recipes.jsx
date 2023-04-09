@@ -3,6 +3,8 @@ import { useState } from "react";
 import Modal from "./Modal"
 function Recipes({recipes, selectedCategory}) {
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
+  const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
+  
   const [modalRecipeTitle, setModalRecipeTitle] = useState('');
   const afterSetModalRecipeTitle = modalRecipeTitle;
   const [modalRecipeDesc, setModalRecipeDesc] = useState('');
@@ -24,6 +26,8 @@ function Recipes({recipes, selectedCategory}) {
           recipeSteps={recipe.steps}
           viewRecipeModal={viewRecipeModal}
           setViewRecipeModal={setViewRecipeModal}
+          removeRecipeModal={removeRecipeModal}
+          setRemoveRecipeModal={setRemoveRecipeModal}
           setModalRecipeTitle={setModalRecipeTitle}
           setModalRecipeDesc={setModalRecipeDesc}
           setModalRecipeIngreds={setModalRecipeIngreds}
@@ -33,12 +37,20 @@ function Recipes({recipes, selectedCategory}) {
       { viewRecipeModal == true && 
         <Modal 
           modalType="viewRecipe" 
-          afterSetModalRecipeTitle={afterSetModalRecipeTitle}
           viewRecipeModal={viewRecipeModal}
           setViewRecipeModal={setViewRecipeModal}
+          afterSetModalRecipeTitle={afterSetModalRecipeTitle}
           afterSetModalRecipeDesc={afterSetModalRecipeDesc}
           afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
           afterSetModalRecipeSteps={afterSetModalRecipeSteps}
+        /> 
+      }
+
+      { removeRecipeModal == true && 
+        <Modal
+          modalType="removeRecipe"
+          setRemoveRecipeModal={setRemoveRecipeModal}
+          modalRecipeTitle={modalRecipeTitle}
         /> 
       }
     </div>
