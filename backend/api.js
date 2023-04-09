@@ -6,7 +6,7 @@ app.use(cors());
 app.get('/api/recipes', (req, res) => {
   const recipes = [
     {
-      "id": 1,
+      "id": "1",
       "name": "Alfredo Sauce",
       "description": "Makes 4-6 Portions",
       "category": "Italian",
@@ -24,7 +24,7 @@ app.get('/api/recipes', (req, res) => {
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Oven Baked Chicken Wings",
       "description": "Super good chicken wings with fried taste, without the deep frying. Makes about 12 wings",
       "category": "American",
@@ -46,7 +46,7 @@ app.get('/api/recipes', (req, res) => {
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Pan Fried Salmon",
       "description": "Healthy and tasty fish dinner",
       "category": "Fish",
@@ -66,7 +66,7 @@ app.get('/api/recipes', (req, res) => {
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Pan Burgers",
       "description": "Juicy burgers cooked from the pan",
       "category": "American",
@@ -86,6 +86,8 @@ app.get('/api/recipes', (req, res) => {
   ];
   res.json(recipes);
 });
+
+
 
 app.listen(3001, () => {
   console.log('Server running on port 3001');

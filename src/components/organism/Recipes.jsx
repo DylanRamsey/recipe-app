@@ -4,7 +4,8 @@ import Modal from "./Modal"
 function Recipes({recipes, selectedCategory}) {
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
-  
+  const [modalRecipeID, setModalRecipeID] = useState('');
+  const afterSetModalRecipeID = modalRecipeID;
   const [modalRecipeTitle, setModalRecipeTitle] = useState('');
   const afterSetModalRecipeTitle = modalRecipeTitle;
   const [modalRecipeDesc, setModalRecipeDesc] = useState('');
@@ -19,7 +20,7 @@ function Recipes({recipes, selectedCategory}) {
       {recipes.map((recipe) => {
         if(recipe.category == selectedCategory || selectedCategory == 'All')
         return <RecipeCard
-          key={recipe.id}
+          recipeID={recipe.id}
           recipeTitle={recipe.name}
           recipeDescription={recipe.description}
           recipeIngreds={recipe.ingredients}
@@ -28,6 +29,7 @@ function Recipes({recipes, selectedCategory}) {
           setViewRecipeModal={setViewRecipeModal}
           removeRecipeModal={removeRecipeModal}
           setRemoveRecipeModal={setRemoveRecipeModal}
+          setModalRecipeID={setModalRecipeID}
           setModalRecipeTitle={setModalRecipeTitle}
           setModalRecipeDesc={setModalRecipeDesc}
           setModalRecipeIngreds={setModalRecipeIngreds}
@@ -50,7 +52,7 @@ function Recipes({recipes, selectedCategory}) {
         <Modal
           modalType="removeRecipe"
           setRemoveRecipeModal={setRemoveRecipeModal}
-          modalRecipeTitle={modalRecipeTitle}
+          afterSetModalRecipeID={afterSetModalRecipeID}
         /> 
       }
     </div>

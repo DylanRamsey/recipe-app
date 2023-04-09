@@ -1,7 +1,8 @@
 import Button from "../atoms/Button"
 
 function RecipeCard({
-      key,
+      recipeID,
+      setModalRecipeID,
       recipeTitle, 
       recipeDescription,
       recipeIngreds,
@@ -24,8 +25,9 @@ function RecipeCard({
   }
 
   function removeRecipe() {
-    console.log(key);
+    setModalRecipeID(recipeID);
     setRemoveRecipeModal(state=>!state);
+
   }
 
   return (
