@@ -6,15 +6,12 @@ import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 function App() {
   const [recipes, setRecipes] = useState([]);
-
   useEffect(() => {
     fetch('http://localhost:3001/api/recipes')
       .then(response => response.json())
-      .then(data => setRecipes(data))
+      .then(data => setRecipes(data.recipes))
       .catch(error => console.error(error));
-      
   }, []);
-
   const [selectedCategory, setSelectedCategory] = useState('All');
   return (
     <div data-element="app">

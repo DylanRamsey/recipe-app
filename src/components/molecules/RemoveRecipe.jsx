@@ -1,15 +1,25 @@
+import { useEffect } from 'react'
 import Button from "../atoms/Button"
-
 function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID}) {
 
   function closeModal() {
     setRemoveRecipeModal(false)
   }
 
+
   function removeRecipeConfirmed() {
-    console.log(afterSetModalRecipeID)
-    console.log("byeeeeeee")
-    
+    fetch(`http://localhost:3001/api/recipes/${afterSetModalRecipeID}`, {
+      method: 'DELETE'
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete recipe');
+        }
+        setRecipes(recipes.filter(recipe => recipe.id !== id));
+      })
+      .catch(error => {
+        console.error(error);
+      });    
   }
 
   return (
