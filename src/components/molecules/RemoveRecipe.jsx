@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Button from "../atoms/Button"
-function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID}) {
+function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID, setRecipes}) {
 
   function closeModal() {
     setRemoveRecipeModal(false)
@@ -16,6 +16,7 @@ function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID}) {
           throw new Error('Failed to delete recipe');
         }
         setRecipes(recipes.filter(recipe => recipe.id !== id));
+        console.log(`${afterSetModalRecipeID} has been deleted`)
       })
       .catch(error => {
         console.error(error);

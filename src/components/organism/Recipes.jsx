@@ -1,7 +1,7 @@
 import RecipeCard from "../molecules/RecipeCard"
 import { useState } from "react";
 import Modal from "./Modal"
-function Recipes({recipes, selectedCategory}) {
+function Recipes({recipes, selectedCategory, setRecipes}) {
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
   const [modalRecipeID, setModalRecipeID] = useState('');
@@ -53,6 +53,7 @@ function Recipes({recipes, selectedCategory}) {
           modalType="removeRecipe"
           setRemoveRecipeModal={setRemoveRecipeModal}
           afterSetModalRecipeID={afterSetModalRecipeID}
+          setRecipes={setRecipes}
         /> 
       }
     </div>

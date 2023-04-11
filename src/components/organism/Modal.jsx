@@ -12,6 +12,7 @@ function Modal({
   setRemoveRecipeModal,
   afterSetModalRecipeIngreds, 
   afterSetModalRecipeSteps,
+  setRecipes
 }){
 
   function closeModal() {
@@ -58,6 +59,7 @@ function Modal({
                     <RemoveRecipe
                       setRemoveRecipeModal={setRemoveRecipeModal}
                       afterSetModalRecipeID={afterSetModalRecipeID}
+                      setRecipes={setRecipes}
                     />
                   }                      
                 </div>
