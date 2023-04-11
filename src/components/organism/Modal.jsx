@@ -12,6 +12,7 @@ function Modal({
   setRemoveRecipeModal,
   afterSetModalRecipeIngreds, 
   afterSetModalRecipeSteps,
+  recipes,
   setRecipes
 }){
 
@@ -59,6 +60,7 @@ function Modal({
                     <RemoveRecipe
                       setRemoveRecipeModal={setRemoveRecipeModal}
                       afterSetModalRecipeID={afterSetModalRecipeID}
+                      recipes={recipes}
                       setRecipes={setRecipes}
                     />
                   }                      

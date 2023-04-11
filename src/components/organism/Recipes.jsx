@@ -53,6 +53,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           modalType="removeRecipe"
           setRemoveRecipeModal={setRemoveRecipeModal}
           afterSetModalRecipeID={afterSetModalRecipeID}
+          recipes={recipes}
           setRecipes={setRecipes}
         /> 
       }

@@ -1,22 +1,21 @@
-import { useEffect } from 'react'
 import Button from "../atoms/Button"
-function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID, setRecipes}) {
-
+function RemoveRecipe({recipes, setRemoveRecipeModal, afterSetModalRecipeID, setRecipes}) {
   function closeModal() {
     setRemoveRecipeModal(false)
   }
 
-
-  function removeRecipeConfirmed() {
-    fetch(`http://localhost:3001/api/recipes/${afterSetModalRecipeID}`, {
+  const removeRecipeConfirmed = (id) => {
+    fetch(`http://localhost:3001/api/recipes/${id}`, {
       method: 'DELETE'
     })
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to delete recipe');
         }
-        setRecipes(recipes.filter(recipe => recipe.id !== id));
-        console.log(`${afterSetModalRecipeID} has been deleted`)
+        const idAsString = id.toString();
+        const updatedRecipes = recipes.filter(recipe => recipe.id !== idAsString);
+        setRecipes(updatedRecipes);
+        closeModal();
       })
       .catch(error => {
         console.error(error);
@@ -33,13 +32,12 @@ function RemoveRecipe({setRemoveRecipeModal, afterSetModalRecipeID, setRecipes})
         Recipe ID: {afterSetModalRecipeID}
       </div>
       <div className="flex justify-center gap-x-4 mt-12">
-        <Button 
-          buttonText="delete" 
-          buttonTextColor="text-white"
-          buttonColor="bg-retro-red"
-          buttonHover="hover:bg-retro-red-hov"
-          buttonClick={removeRecipeConfirmed}
-        />        
+        <button 
+          className={`uppercase font-bold w-max px-4 py-2 rounded-md drop-shadow-btn bg-retro-red hover:bg-retro-red-hov text-white`}
+          onClick={() => removeRecipeConfirmed(afterSetModalRecipeID)}
+        >
+          delete
+        </button>        
         <Button 
           buttonText="cancel"
           buttonColor="bg-sand-brown"
