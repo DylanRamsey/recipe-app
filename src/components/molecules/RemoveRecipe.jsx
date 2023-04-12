@@ -24,12 +24,11 @@ function RemoveRecipe({recipes, setRemoveRecipeModal, afterSetModalRecipeID, set
 
   return (
     <>
-      <h3 className="text-2xl text-center mb-3">WARNING</h3>
+      <h3 className="text-2xl text-center mb-3 font-bold">WARNING</h3>
       <div className="text-xl">
         <p className="mb-3">You are about to permanently delete this recipe, once a recipe has been removed you will not be able to restore the recipe.</p>
         <p className="mb-3">If you wish to continue and delete the recipe, click “DELETE” below.</p>
         <p className="mb-3">If you wish to cancel, click “CANCEL”.</p>
-        Recipe ID: {afterSetModalRecipeID}
       </div>
       <div className="flex justify-center gap-x-4 mt-12">
         <button 

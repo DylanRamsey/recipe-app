@@ -13,7 +13,8 @@ function Modal({
   afterSetModalRecipeIngreds, 
   afterSetModalRecipeSteps,
   recipes,
-  setRecipes
+  setRecipes,
+  setAddRecipeModal
 }){
 
   function closeModal() {
@@ -23,6 +24,10 @@ function Modal({
 
     if(modalType === 'removeRecipe'){
       setRemoveRecipeModal(false)
+    }
+
+    if(modalType === 'addRecipe'){
+      setAddRecipeModal(false)
     }
   }
   return (
@@ -44,7 +49,9 @@ function Modal({
               <div className="">
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   {modalType === 'addRecipe' &&
-                    <AddRecipe />
+                    <AddRecipe
+                      setAddRecipeModal={setAddRecipeModal}
+                    />
                   }
                   {modalType === 'viewRecipe' &&
                     <ViewRecipe
@@ -63,7 +70,7 @@ function Modal({
                       recipes={recipes}
                       setRecipes={setRecipes}
                     />
-                  }                      
+                  }                 
                 </div>
               </div>
             </div>
