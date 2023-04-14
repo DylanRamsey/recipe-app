@@ -17,7 +17,7 @@ function App() {
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <AppTitle />
-        <UtilityRow recipes={recipes} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+        <UtilityRow recipes={recipes} setRecipes={setRecipes} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <Recipes recipes={recipes} selectedCategory={selectedCategory} setRecipes={setRecipes} />
       </div>
     </div>

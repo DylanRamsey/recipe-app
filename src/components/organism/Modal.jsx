@@ -52,6 +52,7 @@ function Modal({
                     <AddRecipe
                       setAddRecipeModal={setAddRecipeModal}
                       setRecipes={setRecipes}
+                      recipes={recipes}
                     />
                   }
                   {modalType === 'viewRecipe' &&

@@ -1,9 +1,16 @@
 import Button from "../atoms/Button"
 import { useState } from 'react'
-function AddRecipe({setAddRecipeModal, setRecipes}) {
+function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
+  const [addRecipeName, setAddRecipeName] = useState('');
+  const [addRecipeDesc, setAddRecipeDesc] = useState('');
+  const [addRecipeIngreds, setAddRecipeIngreds] = useState('');
+  const [addRecipeSteps, setAddRecipeSteps] = useState('');
+  const [addRecipeCategory, setAddRecipeCategory] = useState('');
   function closeModal() {
     setAddRecipeModal(false)
   }
+
+  console.log('Current recipes:', recipes);
 
   const submitRecipe = (e) => {
     console.log('You submitted a recipe pog');
@@ -11,10 +18,10 @@ function AddRecipe({setAddRecipeModal, setRecipes}) {
     
     const newRecipe = {
       name: addRecipeName,
-      description: {addRecipeDesc},
-      ingredients: {addRecipeIngreds},
-      steps: {addRecipeSteps},
-      category: {addRecipeCategory},
+      description: addRecipeDesc,
+      ingredients: [addRecipeIngreds],
+      steps: [addRecipeSteps],
+      category: addRecipeCategory,
     };
     fetch('http://localhost:3001/api/recipes', {
       method: 'POST',
@@ -25,18 +32,14 @@ function AddRecipe({setAddRecipeModal, setRecipes}) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data); // logs the newly added recipe object
-        setRecipes([...recipes, data]); // adds the newly added recipe to the existing recipes array in state
+        console.log('New recipe added:', data);
+        setRecipes([...recipes, data]);
       })
       .catch((err) => console.error(err));    
       closeModal();
   }
 
-  const [addRecipeName, setAddRecipeName] = useState('');
-  const [addRecipeDesc, setAddRecipeDesc] = useState('');
-  const [addRecipeIngreds, setAddRecipeIngreds] = useState('');
-  const [addRecipeSteps, setAddRecipeSteps] = useState('');
-  const [addRecipeCategory, setAddRecipeCategory] = useState('');
+
   return (
     <div>
       <h2 className="text-2xl">Add a new recipe</h2>

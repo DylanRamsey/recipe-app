@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from '../atoms/Button'
 import Dropdown from '../atoms/Dropdown';
 import Modal from '../organism/Modal';
-function UtilityRow({recipes, selectedCategory, setSelectedCategory}) {
+function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory}) {
   const [addRecipeModal, setAddRecipeModal] = useState(false);
 
   function viewRecipe() {
@@ -28,6 +28,8 @@ function UtilityRow({recipes, selectedCategory, setSelectedCategory}) {
         <Modal 
           modalType="addRecipe" 
           setAddRecipeModal={setAddRecipeModal}
+          recipes={recipes}
+          setRecipes={setRecipes}
         />
       }
     </>
