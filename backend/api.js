@@ -6,25 +6,33 @@ app.use(express.json());
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid'); // For generating unique IDs
 
-const DB_PATH = './db/recipes.json';
+let recipes = [];
 
-const getDbData = () => {
-  try {
-    const data = fs.readFileSync(DB_PATH);
-    return JSON.parse(data);
-  } catch (err) {
-    // If the file doesn't exist or is empty, return an empty object
-    return {};
-  }
-};
-
-const writeDbData = (data) => {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data));
-};
+try {
+  const recipesData = fs.readFileSync('./db/recipes.json', 'utf8');
+  recipes = JSON.parse(recipesData).recipes;
+} catch (err) {
+  console.error(err);
+}
 
 app.get('/api/recipes', (req, res, ) => {
   const recipes = JSON.parse(fs.readFileSync('./db/recipes.json'));
   res.json(recipes);
+});
+
+app.post('/api/recipes', (req, res) => {
+  const newRecipe = req.body;
+  // generate a unique id for the new recipe using uuidv4
+  const { v4: uuidv4 } = require('uuid');
+  newRecipe.id = uuidv4();
+  // add the new recipe to the existing recipes array
+  recipes.push(newRecipe);
+  // write the updated array of recipes to the recipes.json file
+  fs.writeFile('./db/recipes.json', JSON.stringify({ recipes }), (err) => {
+    if (err) throw err;
+    // respond with the newly added recipe and a 201 status code
+    res.status(201).json(newRecipe);
+  });
 });
 
 app.delete('/api/recipes/:id', (req, res) => {

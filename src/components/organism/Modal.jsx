@@ -14,7 +14,7 @@ function Modal({
   afterSetModalRecipeSteps,
   recipes,
   setRecipes,
-  setAddRecipeModal
+  setAddRecipeModal,
 }){
 
   function closeModal() {
@@ -51,6 +51,7 @@ function Modal({
                   {modalType === 'addRecipe' &&
                     <AddRecipe
                       setAddRecipeModal={setAddRecipeModal}
+                      setRecipes={setRecipes}
                     />
                   }
                   {modalType === 'viewRecipe' &&
