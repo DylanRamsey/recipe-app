@@ -19,8 +19,8 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
     const newRecipe = {
       name: addRecipeName,
       description: addRecipeDesc,
-      ingredients: [addRecipeIngreds],
-      steps: [addRecipeSteps],
+      ingredients: addRecipeIngreds,
+      steps: addRecipeSteps,
       category: addRecipeCategory,
     };
     fetch('http://localhost:3001/api/recipes', {
@@ -38,7 +38,6 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
       .catch((err) => console.error(err));    
       closeModal();
   }
-
 
   return (
     <div>
@@ -74,7 +73,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
         name="ingredients"
         value={addRecipeIngreds}
         onChange={(event) => {
-          setAddRecipeIngreds(event.target.value);
+          setAddRecipeIngreds(event.target.value.split(','));
         }}         
       />
       <label className="text-xl" htmlFor="steps">Steps (Add each step with a comma ",")</label>
@@ -85,7 +84,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
         name="steps"
         value={addRecipeSteps}
         onChange={(event) => {
-          setAddRecipeSteps(event.target.value);
+          setAddRecipeSteps(event.target.value.split(','));
         }}          
       />
       <label className="text-xl" htmlFor="category">Category</label>
@@ -114,7 +113,6 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
           buttonClick={closeModal}
         />
       </div>
-      
     </div>
   )
 }

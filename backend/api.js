@@ -37,16 +37,22 @@ app.post('/api/recipes', (req, res) => {
 
 app.delete('/api/recipes/:id', (req, res) => {
   const id = req.params.id;
-  const recipes = JSON.parse(fs.readFileSync('./db/recipes.json', 'utf8'));
-  const index = recipes.recipes.findIndex(recipe => recipe.id === id);
-  if (index === -1) {
-    return res.status(404).json({ error: 'Recipe not found' });
-  }
-  recipes.recipes.splice(index, 1);
-  fs.writeFileSync('./db/recipes.json', JSON.stringify(recipes));
-  res.status(204).end();
-});
+  const index = recipes.findIndex((recipe) => recipe.id === id);
 
+  if (index !== -1) {
+    recipes.splice(index, 1);
+    fs.writeFile('./db/recipes.json', JSON.stringify({ recipes }), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error deleting recipe');
+      } else {
+        res.send('Recipe deleted');
+      }
+    });
+  } else {
+    res.status(404).send('Recipe not found');
+  }
+});
 app.listen(3001, () => {
   console.log('Server running on port 3001');
 });
