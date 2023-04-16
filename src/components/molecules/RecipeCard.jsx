@@ -27,7 +27,6 @@ function RecipeCard({
   function removeRecipe() {
     setModalRecipeID(recipeID);
     setRemoveRecipeModal(state=>!state);
-
   }
 
   return (

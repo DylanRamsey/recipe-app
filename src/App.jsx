@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react'
 import { useEffect } from 'react'
 import "/Users/dylanramsey/Sites/rt-recipes/src/assets/sass/main.scss"
@@ -5,6 +6,9 @@ import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 import Pagination from './components/molecules/Pagination'
+
+export const appStateContext = React.createContext();
+
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -20,20 +24,26 @@ function App() {
   const indexOfLastPost = currentPage * recipePerPage;
   const indexOfFirstPost = indexOfLastPost - recipePerPage;
   const currentRecipes = recipes.slice(indexOfFirstPost, indexOfLastPost);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const appState = {
+    recipes,
+    setRecipes,
+  }
 
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
-        <AppTitle />
-        <UtilityRow recipes={recipes} setRecipes={setRecipes} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-        <Recipes recipes={currentRecipes} selectedCategory={selectedCategory} setRecipes={setRecipes} />
-        <Pagination 
-          recipePerPage={recipePerPage} 
-          totalRecipes={recipes.length} 
-          paginate={paginate} 
-        />
+        <appStateContext.Provider value={appState}>
+          <AppTitle />
+          <UtilityRow recipes={recipes} setRecipes={setRecipes} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+          <Recipes recipes={currentRecipes} selectedCategory={selectedCategory} setRecipes={setRecipes} />
+          <Pagination 
+            recipePerPage={recipePerPage} 
+            totalRecipes={recipes.length} 
+            paginate={paginate} 
+          />
+        </appStateContext.Provider>
       </div>
     </div>
   )

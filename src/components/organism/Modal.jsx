@@ -1,6 +1,7 @@
 import AddRecipe from "../molecules/AddRecipe"
 import ViewRecipe from "../molecules/ViewRecipe"
 import RemoveRecipe from "../molecules/RemoveRecipe"
+import EditRecipe from "../molecules/EditRecipe"
 import closeIcon from "../../assets/icons/modal-close.svg"
 function Modal({
   modalType,
@@ -15,6 +16,12 @@ function Modal({
   recipes,
   setRecipes,
   setAddRecipeModal,
+  setModalRecipeID,
+  setModalRecipeTitle,
+  setModalRecipeDesc,
+  setModalRecipeIngreds,
+  setModalRecipeSteps,
+  setEditRecipeModal
 }){
 
   function closeModal() {
@@ -28,6 +35,10 @@ function Modal({
 
     if(modalType === 'addRecipe'){
       setAddRecipeModal(false)
+    }
+
+    if(modalType === 'editRecipe'){
+      setEditRecipeModal(false)
     }
   }
   return (
@@ -72,7 +83,12 @@ function Modal({
                       recipes={recipes}
                       setRecipes={setRecipes}
                     />
-                  }                 
+                  }
+                  {modalType === 'editRecipe' && 
+                    <EditRecipe
+                      setEditRecipeModal={setEditRecipeModal}
+                    />
+                  }              
                 </div>
               </div>
             </div>

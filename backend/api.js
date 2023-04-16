@@ -53,6 +53,29 @@ app.delete('/api/recipes/:id', (req, res) => {
     res.status(404).send('Recipe not found');
   }
 });
+
+app.put('/api/recipes/:id', (req, res) => {
+  const id = req.params.id;
+  const { name, ingredients, steps, category } = req.body;
+  const index = recipes.findIndex((recipe) => recipe.id === id);
+  if (index === -1) {
+    res.status(404).send('Recipe not found');
+  } else {
+    recipes[index].name = name;
+    recipes[index].ingredients = ingredients;
+    recipes[index].steps = steps;
+    recipes[index].category = category;
+    fs.writeFile('db/recipes.json', JSON.stringify({ recipes }), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error updating recipe');
+      } else {
+        res.status(200).send('Recipe updated successfully');
+      }
+    });
+  }
+});
+
 app.listen(3001, () => {
   console.log('Server running on port 3001');
 });

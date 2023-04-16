@@ -20,6 +20,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
       {recipes.map((recipe) => {
         if(recipe.category == selectedCategory || selectedCategory == 'All')
         return <RecipeCard
+          key={recipe.id}
           recipeID={recipe.id}
           recipeTitle={recipe.name}
           recipeDescription={recipe.description}
