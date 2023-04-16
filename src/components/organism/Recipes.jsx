@@ -4,6 +4,7 @@ import Modal from "./Modal"
 function Recipes({recipes, selectedCategory, setRecipes}) {
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
+  const [editRecipeModal, setEditRecipeModal] = useState(false);
   const [modalRecipeID, setModalRecipeID] = useState('');
   const afterSetModalRecipeID = modalRecipeID;
   const [modalRecipeTitle, setModalRecipeTitle] = useState('');
@@ -46,6 +47,8 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           afterSetModalRecipeDesc={afterSetModalRecipeDesc}
           afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
           afterSetModalRecipeSteps={afterSetModalRecipeSteps}
+
+          setEditRecipeModal={setEditRecipeModal}
         /> 
       }
 
@@ -58,6 +61,16 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           setRecipes={setRecipes}
         /> 
       }
+
+      { editRecipeModal == true && 
+        <Modal
+          modalType="editRecipe"
+          setEditRecipeModal="setEditRecipeModal"
+        
+        />     
+      }
+
+      {}
     </div>
   )
 }

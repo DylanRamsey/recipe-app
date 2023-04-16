@@ -74,6 +74,7 @@ function Modal({
                       afterSetModalRecipeDesc={afterSetModalRecipeDesc}
                       afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
                       afterSetModalRecipeSteps={afterSetModalRecipeSteps}
+                      setEditRecipeModal={setEditRecipeModal}
                     />
                   }
                   {modalType === 'removeRecipe' && 

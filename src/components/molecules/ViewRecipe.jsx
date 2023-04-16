@@ -1,8 +1,14 @@
 import Button from "../atoms/Button"
-function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModalRecipeDesc, afterSetModalRecipeIngreds, afterSetModalRecipeSteps}) {
+import EditRecipe from "./EditRecipe";
+function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModalRecipeDesc, afterSetModalRecipeIngreds, afterSetModalRecipeSteps, setEditRecipeModal}) {
 
   function closeModal() {
     setViewRecipeModal(false);
+  }
+
+  function editRecipe() {
+    closeModal();
+    setEditRecipeModal(state=>!state);
   }
 
   return (
@@ -26,7 +32,7 @@ function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModal
           buttonText="edit"
           buttonColor="bg-sand-brown"
           buttonHover="hover:bg-sand-brown-hov"
-          buttonClick="nothing yet"
+          buttonClick={editRecipe}
         />
         <Button 
           buttonText="close" 
