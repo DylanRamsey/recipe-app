@@ -10,10 +10,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
     setAddRecipeModal(false)
   }
 
-  console.log('Current recipes:', recipes);
-
   const submitRecipe = (e) => {
-    console.log('You submitted a recipe pog');
     e.preventDefault();
     
     const newRecipe = {

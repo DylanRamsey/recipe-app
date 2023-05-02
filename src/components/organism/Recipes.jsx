@@ -16,6 +16,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
   const [modalRecipeSteps, setModalRecipeSteps] = useState('');
   const afterSetModalRecipeSteps = modalRecipeSteps;
 
+
   return (
     <div className="grid grid-cols-4 justify-items-center">
       {recipes.map((recipe) => {
@@ -29,6 +30,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           recipeSteps={recipe.steps}
           viewRecipeModal={viewRecipeModal}
           setViewRecipeModal={setViewRecipeModal}
+          setEditRecipeModal={setEditRecipeModal}
           removeRecipeModal={removeRecipeModal}
           setRemoveRecipeModal={setRemoveRecipeModal}
           setModalRecipeID={setModalRecipeID}
@@ -47,7 +49,6 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           afterSetModalRecipeDesc={afterSetModalRecipeDesc}
           afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
           afterSetModalRecipeSteps={afterSetModalRecipeSteps}
-
           setEditRecipeModal={setEditRecipeModal}
         /> 
       }
@@ -65,12 +66,15 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
       { editRecipeModal == true && 
         <Modal
           modalType="editRecipe"
-          setEditRecipeModal="setEditRecipeModal"
-        
+          editRecipeModal={editRecipeModal}
+          setEditRecipeModal={setEditRecipeModal}
+          setModalRecipeID={setModalRecipeID}
+          setModalRecipeTitle={setModalRecipeTitle}
+          setModalRecipeDesc={setModalRecipeDesc}
+          setModalRecipeIngreds={setModalRecipeIngreds}
+          setModalRecipeSteps={setModalRecipeSteps}
         />     
       }
-
-      {}
     </div>
   )
 }

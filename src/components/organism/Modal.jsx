@@ -21,6 +21,7 @@ function Modal({
   setModalRecipeDesc,
   setModalRecipeIngreds,
   setModalRecipeSteps,
+  editRecipeModal,
   setEditRecipeModal
 }){
 
@@ -38,6 +39,8 @@ function Modal({
     }
 
     if(modalType === 'editRecipe'){
+      console.log(modalType)
+      console.log(setEditRecipeModal)
       setEditRecipeModal(false)
     }
   }
@@ -87,7 +90,17 @@ function Modal({
                   }
                   {modalType === 'editRecipe' && 
                     <EditRecipe
+                      editRecipeModal={editRecipeModal}
                       setEditRecipeModal={setEditRecipeModal}
+                      setModalRecipeID={setModalRecipeID}
+                      setModalRecipeTitle={setModalRecipeTitle}
+                      setModalRecipeDesc={setModalRecipeDesc}
+                      setModalRecipeIngreds={setModalRecipeIngreds}
+                      setModalRecipeSteps={setModalRecipeSteps}
+                      afterSetModalRecipeTitle={afterSetModalRecipeTitle}
+                      afterSetModalRecipeDesc={afterSetModalRecipeDesc}
+                      afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
+                      afterSetModalRecipeSteps={afterSetModalRecipeSteps}                                   
                     />
                   }              
                 </div>
