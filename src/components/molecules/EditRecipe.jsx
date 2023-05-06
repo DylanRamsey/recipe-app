@@ -1,20 +1,18 @@
 import React from 'react'
 import Button from '../atoms/Button'
-function EditRecipe({editRecipeModal, setEditRecipeModal}) {
+function EditRecipe({ editRecipeModal, setEditRecipeModal, afterSetModalRecipeID}) {
 
   function closeModal() {
     setEditRecipeModal(false);
   }
 
-  console.log('this is the edit recipe componet')
-  console.log(editRecipeModal)
-
-
   return (
     <div>
-      <h2 className="text-2xl">Edit </h2>
+      <h2 className="text-2xl">Edit</h2>
+      <h2>{afterSetModalRecipeID}</h2>
       <form action=""></form>
       <label className="text-xl" htmlFor="recipeName">Recipe Name</label>
+
       <input 
         className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
         type="text" 

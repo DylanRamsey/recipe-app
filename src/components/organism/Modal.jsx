@@ -97,6 +97,7 @@ function Modal({
                       setModalRecipeDesc={setModalRecipeDesc}
                       setModalRecipeIngreds={setModalRecipeIngreds}
                       setModalRecipeSteps={setModalRecipeSteps}
+                      afterSetModalRecipeID={afterSetModalRecipeID}
                       afterSetModalRecipeTitle={afterSetModalRecipeTitle}
                       afterSetModalRecipeDesc={afterSetModalRecipeDesc}
                       afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}

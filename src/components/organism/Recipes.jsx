@@ -2,11 +2,17 @@ import RecipeCard from "../molecules/RecipeCard"
 import { useState } from "react";
 import Modal from "./Modal"
 function Recipes({recipes, selectedCategory, setRecipes}) {
+
+  const [modalRecipeID, setModalRecipeID] = useState('');
+  const afterSetModalRecipeID = modalRecipeID; 
+
+  /* Modal open and close state  */
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
-  const [modalRecipeID, setModalRecipeID] = useState('');
-  const afterSetModalRecipeID = modalRecipeID;
+  /****************************************/
+
+  /* Setting the state for the modal data */
   const [modalRecipeTitle, setModalRecipeTitle] = useState('');
   const afterSetModalRecipeTitle = modalRecipeTitle;
   const [modalRecipeDesc, setModalRecipeDesc] = useState('');
@@ -15,7 +21,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
   const afterSetModalRecipeIngreds = modalRecipeIngreds;
   const [modalRecipeSteps, setModalRecipeSteps] = useState('');
   const afterSetModalRecipeSteps = modalRecipeSteps;
-
+  /****************************************/
 
   return (
     <div className="grid grid-cols-4 justify-items-center">
@@ -33,6 +39,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           setEditRecipeModal={setEditRecipeModal}
           removeRecipeModal={removeRecipeModal}
           setRemoveRecipeModal={setRemoveRecipeModal}
+          modalRecipeID={modalRecipeID}
           setModalRecipeID={setModalRecipeID}
           setModalRecipeTitle={setModalRecipeTitle}
           setModalRecipeDesc={setModalRecipeDesc}
@@ -68,11 +75,11 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           modalType="editRecipe"
           editRecipeModal={editRecipeModal}
           setEditRecipeModal={setEditRecipeModal}
-          setModalRecipeID={setModalRecipeID}
           setModalRecipeTitle={setModalRecipeTitle}
           setModalRecipeDesc={setModalRecipeDesc}
           setModalRecipeIngreds={setModalRecipeIngreds}
           setModalRecipeSteps={setModalRecipeSteps}
+          afterSetModalRecipeID={afterSetModalRecipeID}
         />     
       }
     </div>

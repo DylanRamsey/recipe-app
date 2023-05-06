@@ -2,6 +2,7 @@ import Button from "../atoms/Button"
 import EditIcon from "../icons/EditIcon"
 function RecipeCard({
       recipeID,
+      modalRecipeID,
       setModalRecipeID,
       recipeTitle, 
       recipeDescription,
@@ -37,7 +38,13 @@ function RecipeCard({
           <h2 className="text-2xl leading-none mb-2">{recipeTitle}</h2>
           <h3 className="text-lg mb-4 leading-tight">{recipeDescription}</h3>
         </div>
-        <EditIcon setEditRecipeModal={setEditRecipeModal} />
+        <EditIcon 
+          setEditRecipeModal={setEditRecipeModal}
+          recipeID={recipeID}
+          modalRecipeID={modalRecipeID}
+          setModalRecipeID={setModalRecipeID}
+        />
+
       </div>
       <div className="flex gap-x-4">
         <Button 

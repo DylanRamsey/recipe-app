@@ -1,14 +1,14 @@
 import Button from "../atoms/Button"
-import EditRecipe from "./EditRecipe";
-function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModalRecipeDesc, afterSetModalRecipeIngreds, afterSetModalRecipeSteps, setEditRecipeModal}) {
+function ViewRecipe({
+  afterSetModalRecipeTitle, 
+  setViewRecipeModal, 
+  afterSetModalRecipeDesc, 
+  afterSetModalRecipeIngreds, 
+  afterSetModalRecipeSteps, 
+}){
 
   function closeModal() {
     setViewRecipeModal(false);
-  }
-
-  function editRecipe() {
-    closeModal();
-    setEditRecipeModal(state=>!state);
   }
 
   return (
@@ -28,12 +28,6 @@ function ViewRecipe({afterSetModalRecipeTitle, setViewRecipeModal, afterSetModal
         )}       
       </ul>
       <div className="flex justify-center gap-x-4 mb-4">
-        <Button 
-          buttonText="edit"
-          buttonColor="bg-sand-brown"
-          buttonHover="hover:bg-sand-brown-hov"
-          buttonClick={editRecipe}
-        />
         <Button 
           buttonText="close" 
           buttonTextColor="text-white"
