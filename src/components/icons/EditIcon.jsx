@@ -5,7 +5,6 @@ function EditIcon({setEditRecipeModal, recipeID, modalRecipeID, setModalRecipeID
   function editRecipe() {
     setEditRecipeModal(state=>!state);
     setModalRecipeID(recipeID);
-    console.log(`Editing the recipe ${modalRecipeID}`)
   }
 
   return (
