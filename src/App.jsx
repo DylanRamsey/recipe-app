@@ -31,6 +31,8 @@ function App() {
     setRecipes,
   }
 
+  console.log(recipes)
+
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
