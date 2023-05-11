@@ -1,30 +1,49 @@
-const asyncHandler = require('express-async-handler')
-// @desc GET goals
-// @route GET /api/goals
+const asyncHandler = require('express-async-handler');
+const Recipe = require('../models/recipeModel');
+// @desc GET recipes
+// @route GET /api/recipes
 const getRecipes = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'Get Recipes'})
+  const recipes = await Recipe.find()
+  res.status(200).json(recipes)
 })
 
-// @desc SET goals
-// @route POST /api/goals
+// @desc SET recipes
+// @route POST /api/recipes
 const setRecipe = asyncHandler(async (req, res) => {
   if(!req.body.text){
     res.status(400)
     throw new Error('Text is required')
   }
-  res.status(200).json({ message: 'Set Recipe'})
+
+  const recipe = await Recipe.create({
+    text: req.body.text
+  })
+  res.status(200).json(recipe)
 })
 
-// @desc Update goals
-// @route PUT /api/goals/:id
+// @desc Update recipes
+// @route PUT /api/recipes/:id
+
+
 const updateRecipe = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Update goal ${req.params.id}`})
+  const recipeRecord = await Recipe.findById(req.params.id)
+  if(!recipeRecord) {
+    res.status(400)
+    throw new Error('Recipe not found')
+  }
+  
+  const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+
+  res.status(200).json(updatedRecipe)
 })
 
-// @desc Delete goals
-// @route DELETE /api/goals/:id
+
+// @desc Delete recipes
+// @route DELETE /api/recipes/:id
 const deleteRecipe = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Delete goal ${req.params.id}`})
+  res.status(200).json({ message: `Delete recipe ${req.params.id}`})
 })
 
 module.exports = {
