@@ -10,20 +10,22 @@ const getRecipes = asyncHandler(async (req, res) => {
 // @desc SET recipes
 // @route POST /api/recipes
 const setRecipe = asyncHandler(async (req, res) => {
-  if(!req.body.text){
+  if(!req.body.name){
     res.status(400)
-    throw new Error('Text is required')
+    throw new Error('Name is required')
   }
 
   const recipe = await Recipe.create({
-    text: req.body.text
+    name: req.body.name,
+    description: req.body.description,
+    ingredients: req.body.ingredients,
+    steps: req.body.steps
   })
   res.status(200).json(recipe)
 })
 
 // @desc Update recipes
 // @route PUT /api/recipes/:id
-
 
 const updateRecipe = asyncHandler(async (req, res) => {
   const recipeRecord = await Recipe.findById(req.params.id)
@@ -39,11 +41,18 @@ const updateRecipe = asyncHandler(async (req, res) => {
   res.status(200).json(updatedRecipe)
 })
 
-
 // @desc Delete recipes
 // @route DELETE /api/recipes/:id
 const deleteRecipe = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Delete recipe ${req.params.id}`})
+  const recipeToDelete = await Recipe.findById(req.params.id)
+  if(!recipeToDelete) {
+    res.status(400)
+    throw new Error('Recipe not found')
+  }
+
+  await recipeToDelete.deleteOne()
+
+  res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
