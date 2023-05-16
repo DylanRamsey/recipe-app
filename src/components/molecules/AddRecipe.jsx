@@ -20,7 +20,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
       steps: addRecipeSteps,
       category: addRecipeCategory,
     };
-    fetch('http://localhost:3001/api/recipes', {
+    fetch('http://localhost:3002/api/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,6 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('New recipe added:', data);
         setRecipes([...recipes, data]);
       })
       .catch((err) => console.error(err));    

@@ -5,7 +5,7 @@ function EditRecipe({ editRecipeModal, setEditRecipeModal, afterSetModalRecipeID
   const [editedTitle, setEditedTitle] = useState('');
  
   useEffect(() => {
-    fetch(`http://localhost:3001/api/recipes/${afterSetModalRecipeID}`)
+    fetch(`http://localhost:3002/api/recipes/${afterSetModalRecipeID}`)
       .then((res) => res.json())
       .then((data) => {
         setEditedTitle(data.name);
@@ -18,7 +18,7 @@ function EditRecipe({ editRecipeModal, setEditRecipeModal, afterSetModalRecipeID
     e.preventDefault();
     console.log('You have edited the recipe! and submitted the from')
   
-    fetch(`http://localhost:3001/api/recipes/${afterSetModalRecipeID}`, {
+    fetch(`http://localhost:3002/api/recipes/${afterSetModalRecipeID}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

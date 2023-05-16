@@ -13,9 +13,9 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   useEffect(() => {
-    fetch('http://localhost:3001/api/recipes')
+    fetch('http://localhost:3002/api/recipes')
       .then(response => response.json())
-      .then(data => setRecipes(data.recipes))
+      .then(data => setRecipes(data))
       .catch(error => console.error(error));
   }, []);
 

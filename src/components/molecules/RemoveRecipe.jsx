@@ -5,7 +5,7 @@ function RemoveRecipe({recipes, setRemoveRecipeModal, afterSetModalRecipeID, set
   }
 
   const removeRecipeConfirmed = (id) => {
-    fetch(`http://localhost:3001/api/recipes/${id}`, {
+    fetch(`http://localhost:3002/api/recipes/${id}`, {
       method: 'DELETE'
     })
       .then(response => {
