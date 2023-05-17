@@ -19,33 +19,37 @@ function App() {
       .catch(error => console.error(error));
   }, []);
 
+  /* This all has to do with Pagination and it still works */
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipePerPage] = useState(12);
+  const [recipePerPage] = useState(2);
   const indexOfLastPost = currentPage * recipePerPage;
   const indexOfFirstPost = indexOfLastPost - recipePerPage;
   const currentRecipes = recipes.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const appState = {
-    recipes,
-    setRecipes,
-  }
-
-  console.log(recipes)
+  /* End Pagination */
 
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
-        <appStateContext.Provider value={appState}>
           <AppTitle />
-          <UtilityRow recipes={recipes} setRecipes={setRecipes} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-          <Recipes recipes={currentRecipes} selectedCategory={selectedCategory} setRecipes={setRecipes} />
+          <UtilityRow 
+            recipes={recipes} 
+            setRecipes={setRecipes} 
+            selectedCategory={selectedCategory} 
+            setSelectedCategory={setSelectedCategory} 
+          />
+          <Recipes 
+            recipes={currentRecipes} 
+            selectedCategory={selectedCategory} 
+            setRecipes={setRecipes} 
+          />
+
+          {/* This works fine leave it alone */}
           <Pagination 
             recipePerPage={recipePerPage} 
             totalRecipes={recipes.length} 
             paginate={paginate} 
           />
-        </appStateContext.Provider>
       </div>
     </div>
   )
