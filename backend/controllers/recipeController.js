@@ -19,7 +19,8 @@ const setRecipe = asyncHandler(async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     ingredients: req.body.ingredients,
-    steps: req.body.steps
+    steps: req.body.steps,
+    category: req.body.category
   })
   res.status(200).json(recipe)
 })

@@ -25,38 +25,26 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
 
   return (
     <div className="grid grid-cols-4 justify-items-center">
-      {recipes.map((recipe) => {
-        if(recipe.category == selectedCategory || selectedCategory == 'All')
-        return <RecipeCard
-          key={recipe._id}
-          recipeID={recipe._id}
-          recipeTitle={recipe.name}
-          recipeDescription={recipe.description}
-          recipeIngreds={recipe.ingredients}
-          recipeSteps={recipe.steps}
-          viewRecipeModal={viewRecipeModal}
-          setViewRecipeModal={setViewRecipeModal}
-          setEditRecipeModal={setEditRecipeModal}
-          removeRecipeModal={removeRecipeModal}
-          setRemoveRecipeModal={setRemoveRecipeModal}
-          modalRecipeID={modalRecipeID}
-          setModalRecipeID={setModalRecipeID}
-          setModalRecipeTitle={setModalRecipeTitle}
-          setModalRecipeDesc={setModalRecipeDesc}
-          setModalRecipeIngreds={setModalRecipeIngreds}
-          setModalRecipeSteps={setModalRecipeSteps}
-        />
-      })}
+      {recipes.map(recipe => (
+        //if(recipe.category == selectedCategory || selectedCategory == 'All')
+          <RecipeCard
+            key={recipe._id}
+            recipeID={recipe._id}
+            recipeTitle={recipe.name}
+            recipeDescription={recipe.description}
+            recipeIngreds={recipe.ingredients}
+            recipeSteps={recipe.steps}
+            viewRecipeModal={viewRecipeModal}
+            setViewRecipeModal={setViewRecipeModal}
+            
+            removeRecipeModal={removeRecipeModal}
+            setRemoveRecipeModal={setRemoveRecipeModal}
+          />
+      ))}      
       { viewRecipeModal == true && 
         <Modal 
           modalType="viewRecipe" 
-          viewRecipeModal={viewRecipeModal}
           setViewRecipeModal={setViewRecipeModal}
-          afterSetModalRecipeTitle={afterSetModalRecipeTitle}
-          afterSetModalRecipeDesc={afterSetModalRecipeDesc}
-          afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
-          afterSetModalRecipeSteps={afterSetModalRecipeSteps}
-          setEditRecipeModal={setEditRecipeModal}
         /> 
       }
 

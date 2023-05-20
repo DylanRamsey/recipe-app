@@ -44,7 +44,6 @@ function RecipeCard({
           modalRecipeID={modalRecipeID}
           setModalRecipeID={setModalRecipeID}
         />
-
       </div>
       <div className="flex gap-x-4">
         <Button 

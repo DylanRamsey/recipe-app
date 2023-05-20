@@ -13,16 +13,20 @@ const recipeSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      required: [true, 'Please add a name value']
+      required: [true, 'Please add a description value']
     },    
     ingredients: {
       type: String,
-      required: [true, 'Please add a name value']
+      required: [true, 'Please add a ingredient values']
     },
     steps: {
       type: String,
-      required: [true, 'Please add a name value']
+      required: [true, 'Please add steps values']
     },
+    category: {
+      type: String,
+      required: [true, 'Please add a category value']      
+    }
   }, 
   {
     timestamps: true,
