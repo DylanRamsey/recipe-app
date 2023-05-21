@@ -25,9 +25,9 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
 
   return (
     <div className="grid grid-cols-4 justify-items-center">
-      {recipes.map(recipe => (
-        //if(recipe.category == selectedCategory || selectedCategory == 'All')
-          <RecipeCard
+      {recipes.map((recipe) => {
+        if(recipe.category == selectedCategory || selectedCategory == 'All')
+        return <RecipeCard
             key={recipe._id}
             recipeID={recipe._id}
             recipeTitle={recipe.name}
@@ -36,11 +36,11 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
             recipeSteps={recipe.steps}
             viewRecipeModal={viewRecipeModal}
             setViewRecipeModal={setViewRecipeModal}
-            
+            setEditRecipeModal={setEditRecipeModal}
             removeRecipeModal={removeRecipeModal}
             setRemoveRecipeModal={setRemoveRecipeModal}
           />
-      ))}      
+        })}
       { viewRecipeModal == true && 
         <Modal 
           modalType="viewRecipe" 
