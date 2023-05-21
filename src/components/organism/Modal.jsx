@@ -5,14 +5,10 @@ import EditRecipe from "../molecules/EditRecipe"
 import closeIcon from "../../assets/icons/modal-close.svg"
 function Modal({
   modalType,
-  afterSetModalRecipeID,
-  afterSetModalRecipeTitle, 
-  afterSetModalRecipeDesc, 
-  viewRecipeModal, 
+
+  viewRecipeModal,
   setViewRecipeModal,
   setRemoveRecipeModal,
-  afterSetModalRecipeIngreds, 
-  afterSetModalRecipeSteps,
   recipes,
   setRecipes,
   setAddRecipeModal,
@@ -73,6 +69,7 @@ function Modal({
                     <ViewRecipe
                       viewRecipeModal={viewRecipeModal}
                       setViewRecipeModal={setViewRecipeModal}
+
                     />
                   }
                   {modalType === 'removeRecipe' && 

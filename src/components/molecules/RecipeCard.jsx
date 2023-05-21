@@ -20,7 +20,20 @@ function RecipeCard({
 
   function viewRecipe() {
     setViewRecipeModal(state=>!state);
+
     setModalRecipeTitle(recipeTitle);
+    /*
+    Example of what setting up all the recipe Modal in an object might look like
+
+    setModalRecipeData({
+      title: recipeTitle,
+      desc: recipeDescription
+      ingre: recipeIngreds,
+      steps: recipeSteps,
+      cat: 
+    })
+    */
+
     setModalRecipeDesc(recipeDescription);
     setModalRecipeIngreds(recipeIngreds);
     setModalRecipeSteps(recipeSteps);

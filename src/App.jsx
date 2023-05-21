@@ -9,6 +9,16 @@ import Pagination from './components/molecules/Pagination'
 
 export const RecipeContext = React.createContext();
 
+{/*
+Todo -
+Try to see about coming up with seting up all the modal data in a single object. Something like,
+const [modalRecipeData, setModalRecipeData] = useState({});
+
+Then use context to pass this dat direct to ViewRecipe,EditRecipe,DeleteRecipe, etc 
+
+*/}
+
+
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
