@@ -4,7 +4,7 @@ import { ModalTitleContext } from '../organism/Recipes';
 
 function ViewRecipe({setViewRecipeModal}) {
 
-  const {modalRecipeTitle, setModalRecipeTitle} = React.useContext(ModalTitleContext);
+  const {modalRecipeData, setModalRecipeData} = React.useContext(ModalTitleContext);
   function closeModal() {
     setViewRecipeModal(false);
     console.log('the view recipe modal will now close')
@@ -12,7 +12,7 @@ function ViewRecipe({setViewRecipeModal}) {
 
   return (
     <div>
-      <h2 className="text-2xl leading-tight mb-3">{modalRecipeTitle}</h2>
+      <h2 className="text-2xl leading-tight mb-3">{modalRecipeData.title}</h2>
       <h3 className="text-xl leading-tight mb-3">Recipe Description</h3>
       <h3 className="text-xl">Ingredients</h3>
       <ul className="mb-3 list-disc ml-4">

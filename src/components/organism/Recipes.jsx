@@ -6,8 +6,6 @@ import Modal from "./Modal"
 export const ModalTitleContext = React.createContext();
 
 function Recipes({recipes, selectedCategory, setRecipes}) {
-  const [modalRecipeID, setModalRecipeID] = useState('');
-  const afterSetModalRecipeID = modalRecipeID; 
 
   /* Modal open and close state. THIS SHOULD BE GOOD TO KEEP. JUST THE STATE OF THE MODALS OPENING AND CLOSING, DOES NOT HANDLE RECIPE STATE  */
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
@@ -16,16 +14,12 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
   /****************************************/
 
   /* Setting the state for the modal data */
-  const [modalRecipeTitle, setModalRecipeTitle] = useState('');
+  const [modalRecipeData, setModalRecipeData] = useState({});
+
+  // This is for making this state and setState available to any components using ModalTitleContext
   const value = {
-    modalRecipeTitle, setModalRecipeTitle
+    modalRecipeData, setModalRecipeData
   }
-
-  const [modalRecipeDesc, setModalRecipeDesc] = useState('');
-
-  const [modalRecipeIngreds, setModalRecipeIngreds] = useState('');
-
-  const [modalRecipeSteps, setModalRecipeSteps] = useState('');
 
   /****************************************/
 
@@ -43,14 +37,15 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
               recipeSteps={recipe.steps}
               viewRecipeModal={viewRecipeModal}
               setViewRecipeModal={setViewRecipeModal}
-              setModalRecipeTitle={setModalRecipeTitle}
+              modalRecipeData={modalRecipeData}
+              setModalRecipeData={setModalRecipeData}
+              
             />
           })}
         { viewRecipeModal == true && 
           <Modal 
             modalType="viewRecipe" 
             setViewRecipeModal={setViewRecipeModal}
-            modalRecipeTitle={modalRecipeTitle}
           /> 
         }
 
