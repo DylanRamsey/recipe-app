@@ -10,9 +10,6 @@ function RecipeCard({
       recipeSteps,
       setViewRecipeModal,
       setRemoveRecipeModal,
-      setModalRecipeTitle, 
-      setModalRecipeIngreds,
-      setModalRecipeSteps,
       setEditRecipeModal,
       modalRecipeData,
       setModalRecipeData
@@ -22,7 +19,10 @@ function RecipeCard({
   function viewRecipe() {
     setViewRecipeModal(state=>!state);
     setModalRecipeData({
-      title: `${recipeTitle}`
+      title: `${recipeTitle}`,
+      description: `${recipeDescription}`,
+      steps: `${recipeSteps}`,
+      ingredients: `${recipeIngreds}`
     });
   }
 

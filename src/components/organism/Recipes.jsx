@@ -3,7 +3,7 @@ import RecipeCard from "../molecules/RecipeCard"
 import { useState } from "react";
 import Modal from "./Modal"
 
-export const ModalTitleContext = React.createContext();
+export const ModalDataContext = React.createContext();
 
 function Recipes({recipes, selectedCategory, setRecipes}) {
 
@@ -25,7 +25,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
 
   return (
     <div className="grid grid-cols-4 justify-items-center">
-      <ModalTitleContext.Provider value={value} >
+      <ModalDataContext.Provider value={value} >
         {recipes.map((recipe) => {
           if(recipe.category == selectedCategory || selectedCategory == 'All')
           return <RecipeCard
@@ -34,12 +34,12 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
               recipeTitle={recipe.name}
               recipeDescription={recipe.description}
               recipeIngreds={recipe.ingredients}
+              recipeCategory={recipe.category}
               recipeSteps={recipe.steps}
               viewRecipeModal={viewRecipeModal}
               setViewRecipeModal={setViewRecipeModal}
               modalRecipeData={modalRecipeData}
               setModalRecipeData={setModalRecipeData}
-              
             />
           })}
         { viewRecipeModal == true && 
@@ -71,7 +71,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
             afterSetModalRecipeID={afterSetModalRecipeID}
           />     
         }
-      </ModalTitleContext.Provider>
+      </ModalDataContext.Provider>
     </div>
   )
 }
