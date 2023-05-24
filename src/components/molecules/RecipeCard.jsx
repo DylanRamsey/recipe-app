@@ -8,6 +8,7 @@ function RecipeCard({
       recipeDescription,
       recipeIngreds,
       recipeSteps,
+      recipeCategory,
       setViewRecipeModal,
       setRemoveRecipeModal,
       setEditRecipeModal,
@@ -22,7 +23,8 @@ function RecipeCard({
       title: `${recipeTitle}`,
       description: `${recipeDescription}`,
       steps: `${recipeSteps}`,
-      ingredients: `${recipeIngreds}`
+      ingredients: `${recipeIngreds}`,
+      category: `${recipeCategory}`
     });
   }
 
