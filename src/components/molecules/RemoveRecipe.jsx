@@ -1,7 +1,11 @@
-import Button from "../atoms/Button"
-function RemoveRecipe({recipes, setRemoveRecipeModal, afterSetModalRecipeID, setRecipes}) {
+import React from 'react';
+import Button from "../atoms/Button";
+import { ModalDataContext } from '../organism/Recipes';
+function RemoveRecipe({recipes, setRemoveRecipeModal, recipeID, setRecipes}) {
+  const {modalRecipeData} = React.useContext(ModalDataContext);
   function closeModal() {
     setRemoveRecipeModal(false)
+    
   }
 
   const removeRecipeConfirmed = (id) => {
@@ -29,11 +33,13 @@ function RemoveRecipe({recipes, setRemoveRecipeModal, afterSetModalRecipeID, set
         <p className="mb-3">You are about to permanently delete this recipe, once a recipe has been removed you will not be able to restore the recipe.</p>
         <p className="mb-3">If you wish to continue and delete the recipe, click “DELETE” below.</p>
         <p className="mb-3">If you wish to cancel, click “CANCEL”.</p>
+        <p>{modalRecipeData.id}</p>
+        <p>{modalRecipeData.title}</p>
       </div>
       <div className="flex justify-center gap-x-4 mt-12">
         <button 
           className={`uppercase font-bold w-max px-4 py-2 rounded-md drop-shadow-btn bg-retro-red hover:bg-retro-red-hov text-white`}
-          onClick={() => removeRecipeConfirmed(afterSetModalRecipeID)}
+          onClick={() => removeRecipeConfirmed(recipeID)}
         >
           delete
         </button>        

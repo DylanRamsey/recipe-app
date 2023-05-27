@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Button from "../atoms/Button"
 import EditIcon from "../icons/EditIcon"
 function RecipeCard({
@@ -20,6 +22,7 @@ function RecipeCard({
   function viewRecipe() {
     setViewRecipeModal(state=>!state);
     setModalRecipeData({
+      id: `${recipeID}`,
       title: `${recipeTitle}`,
       description: `${recipeDescription}`,
       steps: `${recipeSteps}`,
@@ -29,7 +32,7 @@ function RecipeCard({
   }
 
   function removeRecipe() {
-    setModalRecipeID(recipeID);
+    console.log('remove recipe modal should open now')
     setRemoveRecipeModal(state=>!state);
   }
 

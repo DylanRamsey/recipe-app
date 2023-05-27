@@ -40,6 +40,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
               setViewRecipeModal={setViewRecipeModal}
               modalRecipeData={modalRecipeData}
               setModalRecipeData={setModalRecipeData}
+              setRemoveRecipeModal={setRemoveRecipeModal}
             />
           })}
         { viewRecipeModal == true && 
@@ -53,7 +54,6 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
           <Modal
             modalType="removeRecipe"
             setRemoveRecipeModal={setRemoveRecipeModal}
-            afterSetModalRecipeID={afterSetModalRecipeID}
             recipes={recipes}
             setRecipes={setRecipes}
           /> 
@@ -68,7 +68,6 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
             setModalRecipeDesc={setModalRecipeDesc}
             setModalRecipeIngreds={setModalRecipeIngreds}
             setModalRecipeSteps={setModalRecipeSteps}
-            afterSetModalRecipeID={afterSetModalRecipeID}
           />     
         }
       </ModalDataContext.Provider>

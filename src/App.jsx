@@ -6,18 +6,7 @@ import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 import Pagination from './components/molecules/Pagination'
-
 export const RecipeContext = React.createContext();
-
-{/*
-Todo -
-Try to see about coming up with seting up all the modal data in a single object. Something like,
-const [modalRecipeData, setModalRecipeData] = useState({});
-
-Then use context to pass this dat direct to ViewRecipe,EditRecipe,DeleteRecipe, etc 
-
-*/}
-
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -52,13 +41,11 @@ function App() {
             selectedCategory={selectedCategory} 
             setSelectedCategory={setSelectedCategory} 
           />
-
           <Recipes 
             recipes={currentRecipes} 
             selectedCategory={selectedCategory} 
             setRecipes={setRecipes} 
           />
-
           {/* This works fine leave it alone */}
           <Pagination 
             recipePerPage={recipePerPage} 
@@ -66,19 +53,6 @@ function App() {
             paginate={paginate} 
           />
         </RecipeContext.Provider>
-
-        {/* This is just a test looping over the recipes received from the backend 
-          {recipes.map(recipe => (
-            <div>
-              <h2>{recipe.name}</h2>
-              <p>ID: {recipe._id}</p>
-              <p>Description: {recipe.description}</p>
-              <p>Ingredients: {recipe.ingredients}</p>
-              <p>Steps: {recipe.steps}</p>
-              <p>Category: {recipe.category}</p>
-            </div>
-          ))}          
-          */}
       </div>
     </div>
   )

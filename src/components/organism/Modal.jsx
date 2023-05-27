@@ -13,6 +13,7 @@ function Modal({
   setRecipes,
   setAddRecipeModal,
   setModalRecipeID,
+  recipeID,
   setModalRecipeTitle,
   setModalRecipeDesc,
   setModalRecipeIngreds,
@@ -69,14 +70,13 @@ function Modal({
                     <ViewRecipe
                       viewRecipeModal={viewRecipeModal}
                       setViewRecipeModal={setViewRecipeModal}
-
                     />
                   }
                   {modalType === 'removeRecipe' && 
                     <RemoveRecipe
                       setRemoveRecipeModal={setRemoveRecipeModal}
-                      afterSetModalRecipeID={afterSetModalRecipeID}
                       recipes={recipes}
+                      recipeID={recipeID}
                       setRecipes={setRecipes}
                     />
                   }
