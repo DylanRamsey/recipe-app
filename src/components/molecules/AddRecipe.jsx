@@ -12,7 +12,6 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
 
   const submitRecipe = (e) => {
     e.preventDefault();
-    
     const newRecipe = {
       name: addRecipeName,
       description: addRecipeDesc,
@@ -20,11 +19,12 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
       steps: addRecipeSteps,
       category: addRecipeCategory,
     };
+    console.log('Sending request to server:', newRecipe);
     fetch('http://localhost:3002/api/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      },
+      },      
       body: JSON.stringify(newRecipe),
     })
       .then((res) => res.json())
@@ -69,7 +69,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
         name="ingredients"
         value={addRecipeIngreds}
         onChange={(event) => {
-          setAddRecipeIngreds(event.target.value.split(','));
+          setAddRecipeIngreds(event.target.value);
         }}         
       />
       <label className="text-xl" htmlFor="steps">Steps (Add each step with a comma ",")</label>
@@ -80,7 +80,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
         name="steps"
         value={addRecipeSteps}
         onChange={(event) => {
-          setAddRecipeSteps(event.target.value.split(','));
+          setAddRecipeSteps(event.target.value);
         }}          
       />
       <label className="text-xl" htmlFor="category">Category</label>

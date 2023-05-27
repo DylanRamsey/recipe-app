@@ -56,7 +56,7 @@ function App() {
           <Recipes 
             recipes={currentRecipes} 
             selectedCategory={selectedCategory} 
-            //setRecipes={setRecipes} 
+            setRecipes={setRecipes} 
           />
 
           {/* This works fine leave it alone */}

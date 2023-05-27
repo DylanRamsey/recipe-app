@@ -10,20 +10,16 @@ const getRecipes = asyncHandler(async (req, res) => {
 // @desc SET recipes
 // @route POST /api/recipes
 const setRecipe = asyncHandler(async (req, res) => {
-  if(!req.body.name){
-    res.status(400)
-    throw new Error('Name is required')
+  try {
+    const recipe = new Recipe(req.body);
+    const savedRecipe = await recipe.save();
+    console.log(savedRecipe); // Add this line
+    res.json(savedRecipe);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ error: err.message });
   }
-
-  const recipe = await Recipe.create({
-    name: req.body.name,
-    description: req.body.description,
-    ingredients: req.body.ingredients,
-    steps: req.body.steps,
-    category: req.body.category
-  })
-  res.status(200).json(recipe)
-})
+});
 
 // @desc Update recipes
 // @route PUT /api/recipes/:id

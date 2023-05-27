@@ -5,7 +5,7 @@ import Modal from '../organism/Modal';
 function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory}) {
   const [addRecipeModal, setAddRecipeModal] = useState(false);
 
-  function viewRecipe() {
+  function addRecipe() {
     setAddRecipeModal(state=>!state);
   }
 
@@ -16,7 +16,7 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory}
           buttonText="add recipe"
           buttonColor="bg-sand-brown"
           buttonHover="hover:bg-sand-brown-hov"
-          buttonClick={viewRecipe}
+          buttonClick={addRecipe}
         />
         <Dropdown
           recipes={recipes}
