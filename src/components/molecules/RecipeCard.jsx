@@ -19,8 +19,7 @@ function RecipeCard({
     }) 
   {
 
-  function viewRecipe() {
-    setViewRecipeModal(state=>!state);
+  function setModalData(){
     setModalRecipeData({
       id: `${recipeID}`,
       title: `${recipeTitle}`,
@@ -31,8 +30,14 @@ function RecipeCard({
     });
   }
 
+  function viewRecipe() {
+    setViewRecipeModal(state=>!state);
+    setModalData();
+  }
+
   function removeRecipe() {
-    console.log('remove recipe modal should open now')
+    console.log('remove recipe modal should open now');
+    setModalData();
     setRemoveRecipeModal(state=>!state);
   }
 
