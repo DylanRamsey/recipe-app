@@ -1,103 +1,135 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { useState } from 'react'
 import Button from '../atoms/Button'
-function EditRecipe({ editRecipeModal, setEditRecipeModal, afterSetModalRecipeID}) {
-
-  const [editedTitle, setEditedTitle] = useState('');
- 
-  useEffect(() => {
-    fetch(`http://localhost:3002/api/recipes/${afterSetModalRecipeID}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setEditedTitle(data.name);
-      })
-      .catch((err) => console.error(err));
-  }, [afterSetModalRecipeID]);
+import { ModalDataContext } from '../organism/Recipes';
+function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
+  const {modalRecipeData} = React.useContext(ModalDataContext);
+  const [editRecipeID, setEditRecipeID] = useState(modalRecipeData.id);
+  const [editRecipeName, setEditRecipeName] = useState(modalRecipeData.title);
+  const [editRecipeDescription, setEditRecipeDescription] = useState(modalRecipeData.description);
+  const [editRecipeIngredients, setEditRecipeIngredients] = useState(modalRecipeData.ingredients);
+  const [editRecipeSteps, setEditRecipeSteps] = useState(modalRecipeData.steps);
+  const [editRecipeCategory, setEditRecipeCategory] = useState(modalRecipeData.category);
 
 
-  const editRecipe = (e) => {
-    e.preventDefault();
-    console.log('You have edited the recipe! and submitted the from')
-  
-    fetch(`http://localhost:3002/api/recipes/${afterSetModalRecipeID}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ editedTitle}),
-    })
-      .then((res) => {
-        if (res.ok) {
-          onUpdate();
-        }
-      })
-      .catch((err) => console.error(err));
 
-  };  
+  //Current issue I believe is recipe needs a new ID when updated? Maybe
 
   function closeModal() {
     setEditRecipeModal(false);
   }
 
+  const editRecipe = (e) => {
+    e.preventDefault();
+    console.log('You have edited the recipe! and submitted the from')
+    const editedRecipe = {
+
+      name: editRecipeName,
+      description: editRecipeDescription,
+      ingredients: editRecipeIngredients,
+      steps: editRecipeSteps,
+      category: editRecipeCategory,
+    };
+
+    console.log(`Sending request to server:${editedRecipe}`)
+
+    /*
+    setModalRecipeData({
+      id: recipeID,
+      title: editRecipeName,
+      description: editRecipeDescription,
+      steps: editRecipeSteps,
+      ingredients: editRecipeIngredients,
+      category: editRecipeCategory
+    })
+    */
+    
+    fetch(`http://localhost:3002/api/recipes/${modalRecipeData.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },      
+        body: JSON.stringify(editedRecipe),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setRecipes([...recipes, data]);
+      })
+      .catch((err) => console.error(err));    
+      closeModal();
+  };  
+
   return (
     <div>
       <h2 className="text-2xl">Edit</h2>
+      <p>{modalRecipeData.id}</p>
       <form onSubmit={editRecipe}>
         <label className="text-xl" htmlFor="recipeName">Recipe Name</label>
+        <p>{modalRecipeData.title}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
           id="recipeName" 
           name="recipeName"
-          value={editedTitle}
-          onChange={(e) => setEditedTitle(e.target.value)}
+          value={editRecipeName}
+          onChange={(event) => {
+            setEditRecipeName(event.target.value)
+          }}
         />
-        <h2>{editedTitle}</h2>
+        <p>{editRecipeName}</p>
         <label className="text-xl" htmlFor="description">Description</label>
+        <p>{modalRecipeData.description}</p>
         <textarea 
           className="block drop-shadow-default w-full mt-2 mb-4" 
           type="text" 
           id="description" 
           name="description" 
-          value=""
+          value={editRecipeDescription}
           onChange={(event) => {
-            setAddRecipeDesc(event.target.value);
+            setEditRecipeDescription(event.target.value)
           }}               
         />
+        <p>{editRecipeDescription}</p>
         <label className="text-xl" htmlFor="ingredients">Ingredients (Add each with a comma ",")</label>
+        <p>{modalRecipeData.ingredients}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
           id="ingredients" 
           name="ingredients"
-          value=""
+          value={editRecipeIngredients}
           onChange={(event) => {
-            setAddRecipeIngreds(event.target.value.split(','));
+            setEditRecipeIngredients(event.target.value)
           }}         
         />
+        <p>{editRecipeIngredients}</p>
         <label className="text-xl" htmlFor="steps">Steps (Add each step with a comma ",")</label>
+        <p>{modalRecipeData.steps}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
           id="steps" 
           name="steps"
-          value=""
+          value={editRecipeSteps}
           onChange={(event) => {
-            setAddRecipeSteps(event.target.value.split(','));
+            setEditRecipeSteps(event.target.value)
           }}          
         />
-        {/*
+        <p>{editRecipeSteps}</p>
         <label className="text-xl" htmlFor="category">Category</label>
+        <p>{modalRecipeData.category}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
           id="category" 
           name="category"
-          value={addRecipeCategory}
+          value={editRecipeCategory}
           onChange={(event) => {
-            setAddRecipeCategory(event.target.value);
+            setEditRecipeCategory(event.target.value)
           }}          
         />
-        */}
+        <p>{editRecipeCategory}</p>
         
         <div className="flex justify-center gap-x-4 mt-12">
           <Button 

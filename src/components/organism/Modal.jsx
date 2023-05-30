@@ -5,19 +5,12 @@ import EditRecipe from "../molecules/EditRecipe"
 import closeIcon from "../../assets/icons/modal-close.svg"
 function Modal({
   modalType,
-
   viewRecipeModal,
   setViewRecipeModal,
   setRemoveRecipeModal,
   recipes,
   setRecipes,
   setAddRecipeModal,
-  setModalRecipeID,
-  recipeID,
-  setModalRecipeTitle,
-  setModalRecipeDesc,
-  setModalRecipeIngreds,
-  setModalRecipeSteps,
   editRecipeModal,
   setEditRecipeModal
 }){
@@ -36,8 +29,6 @@ function Modal({
     }
 
     if(modalType === 'editRecipe'){
-      console.log(modalType)
-      console.log(setEditRecipeModal)
       setEditRecipeModal(false)
     }
   }
@@ -76,24 +67,15 @@ function Modal({
                     <RemoveRecipe
                       setRemoveRecipeModal={setRemoveRecipeModal}
                       recipes={recipes}
-                      recipeID={recipeID}
                       setRecipes={setRecipes}
                     />
                   }
                   {modalType === 'editRecipe' && 
                     <EditRecipe
                       editRecipeModal={editRecipeModal}
-                      setEditRecipeModal={setEditRecipeModal}
-                      setModalRecipeID={setModalRecipeID}
-                      setModalRecipeTitle={setModalRecipeTitle}
-                      setModalRecipeDesc={setModalRecipeDesc}
-                      setModalRecipeIngreds={setModalRecipeIngreds}
-                      setModalRecipeSteps={setModalRecipeSteps}
-                      afterSetModalRecipeID={afterSetModalRecipeID}
-                      afterSetModalRecipeTitle={afterSetModalRecipeTitle}
-                      afterSetModalRecipeDesc={afterSetModalRecipeDesc}
-                      afterSetModalRecipeIngreds={afterSetModalRecipeIngreds}
-                      afterSetModalRecipeSteps={afterSetModalRecipeSteps}                                   
+                      setEditRecipeModal={setEditRecipeModal}     
+                      recipes={recipes}
+                      setRecipes={setRecipes}                                                 
                     />
                   }              
                 </div>

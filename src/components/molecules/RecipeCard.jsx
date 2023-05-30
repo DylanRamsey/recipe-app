@@ -36,9 +36,14 @@ function RecipeCard({
   }
 
   function removeRecipe() {
-    console.log('remove recipe modal should open now');
-    setModalData();
     setRemoveRecipeModal(state=>!state);
+    setModalData();
+  }
+
+  function editRecipe() {
+    console.log("I've been clicked");
+    setEditRecipeModal(state=>!state);
+    setModalData();
   }
 
   return (
@@ -48,12 +53,11 @@ function RecipeCard({
           <h2 className="text-2xl leading-none mb-2">{recipeTitle}</h2>
           <h3 className="text-lg mb-4 leading-tight">{recipeDescription}</h3>
         </div>
-        <EditIcon 
-          setEditRecipeModal={setEditRecipeModal}
-          recipeID={recipeID}
-          modalRecipeID={modalRecipeID}
-          setModalRecipeID={setModalRecipeID}
-        />
+        <span 
+          className="cursor-pointer shrink-0" 
+          onClick={editRecipe}>
+          <EditIcon/>
+        </span>
       </div>
       <div className="flex gap-x-4">
         <Button 

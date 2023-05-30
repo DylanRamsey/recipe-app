@@ -20,7 +20,6 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
   const value = {
     modalRecipeData, setModalRecipeData
   }
-
   /****************************************/
 
   return (
@@ -41,6 +40,7 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
               modalRecipeData={modalRecipeData}
               setModalRecipeData={setModalRecipeData}
               setRemoveRecipeModal={setRemoveRecipeModal}
+              setEditRecipeModal={setEditRecipeModal}
             />
           })}
         { viewRecipeModal == true && 
@@ -62,12 +62,10 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
         { editRecipeModal == true && 
           <Modal
             modalType="editRecipe"
+            recipes={recipes}
+            setRecipes={setRecipes}
             editRecipeModal={editRecipeModal}
             setEditRecipeModal={setEditRecipeModal}
-
-            setModalRecipeDesc={setModalRecipeDesc}
-            setModalRecipeIngreds={setModalRecipeIngreds}
-            setModalRecipeSteps={setModalRecipeSteps}
           />     
         }
       </ModalDataContext.Provider>
