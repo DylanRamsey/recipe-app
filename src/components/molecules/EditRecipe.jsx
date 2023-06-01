@@ -3,15 +3,14 @@ import { useState } from 'react'
 import Button from '../atoms/Button'
 import { ModalDataContext } from '../organism/Recipes';
 function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
+
   const {modalRecipeData} = React.useContext(ModalDataContext);
-  const [editRecipeID, setEditRecipeID] = useState(modalRecipeData.id);
+  const recipeID = modalRecipeData.id;
   const [editRecipeName, setEditRecipeName] = useState(modalRecipeData.title);
   const [editRecipeDescription, setEditRecipeDescription] = useState(modalRecipeData.description);
   const [editRecipeIngredients, setEditRecipeIngredients] = useState(modalRecipeData.ingredients);
   const [editRecipeSteps, setEditRecipeSteps] = useState(modalRecipeData.steps);
   const [editRecipeCategory, setEditRecipeCategory] = useState(modalRecipeData.category);
-
-
 
   //Current issue I believe is recipe needs a new ID when updated? Maybe
 
@@ -23,7 +22,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
     e.preventDefault();
     console.log('You have edited the recipe! and submitted the from')
     const editedRecipe = {
-
       name: editRecipeName,
       description: editRecipeDescription,
       ingredients: editRecipeIngredients,
@@ -33,32 +31,29 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
 
     console.log(`Sending request to server:${editedRecipe}`)
 
-    /*
-    setModalRecipeData({
-      id: recipeID,
-      title: editRecipeName,
-      description: editRecipeDescription,
-      steps: editRecipeSteps,
-      ingredients: editRecipeIngredients,
-      category: editRecipeCategory
-    })
-    */
-    
-    fetch(`http://localhost:3002/api/recipes/${modalRecipeData.id}`, {
+    fetch(`http://localhost:3002/api/recipes/${recipeID}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },      
         body: JSON.stringify(editedRecipe),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setRecipes([...recipes, data]);
-      })
-      .catch((err) => console.error(err));    
-      closeModal();
-  };  
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('Received response from server:', data);
+      const updatedRecipes = recipes.map((recipe) => {
+        if (recipe.id === recipeID) {
+          return data; // Replace the edited recipe
+        }
+        return recipe;
+      });
+      console.log('Updated recipes:', updatedRecipes);
+      setRecipes(updatedRecipes);
+    })
+    .catch((err) => console.error(err));
+
+  closeModal();
+};
 
   return (
     <div>
