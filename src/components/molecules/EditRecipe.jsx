@@ -11,8 +11,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
   const [editRecipeSteps, setEditRecipeSteps] = useState(modalRecipeData.steps);
   const [editRecipeCategory, setEditRecipeCategory] = useState(modalRecipeData.category);
 
-  //Current issue I believe is recipe needs a new ID when updated? Maybe
-
   function closeModal() {
     setEditRecipeModal(false);
   }
@@ -56,7 +54,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
   return (
     <div>
       <h2 className="text-2xl">Edit</h2>
-      <p>{modalRecipeData.id}</p>
       <form onSubmit={editRecipe}>
         <label className="text-xl" htmlFor="recipeName">Recipe Name</label>
         <p>{modalRecipeData.title}</p>
@@ -72,7 +69,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
         />
         <p>{editRecipeName}</p>
         <label className="text-xl" htmlFor="description">Description</label>
-        <p>{modalRecipeData.description}</p>
         <textarea 
           className="block drop-shadow-default w-full mt-2 mb-4" 
           type="text" 
@@ -85,7 +81,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
         />
         <p>{editRecipeDescription}</p>
         <label className="text-xl" htmlFor="ingredients">Ingredients (Add each with a comma ",")</label>
-        <p>{modalRecipeData.ingredients}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
@@ -98,7 +93,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
         />
         <p>{editRecipeIngredients}</p>
         <label className="text-xl" htmlFor="steps">Steps (Add each step with a comma ",")</label>
-        <p>{modalRecipeData.steps}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
@@ -111,7 +105,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
         />
         <p>{editRecipeSteps}</p>
         <label className="text-xl" htmlFor="category">Category</label>
-        <p>{modalRecipeData.category}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
@@ -122,8 +115,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
             setEditRecipeCategory(event.target.value)
           }}          
         />
-        <p>{editRecipeCategory}</p>
-        
         <div className="flex justify-center gap-x-4 mt-12">
           <Button 
             buttonText="edit recipe"
