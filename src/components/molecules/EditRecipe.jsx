@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Button from '../atoms/Button'
 import { ModalDataContext } from '../organism/Recipes';
 function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
-
   const {modalRecipeData} = React.useContext(ModalDataContext);
   const recipeID = modalRecipeData.id;
   const [editRecipeName, setEditRecipeName] = useState(modalRecipeData.title);
@@ -42,7 +41,7 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
     .then((data) => {
       console.log('Received response from server:', data);
       const updatedRecipes = recipes.map((recipe) => {
-        if (recipe.id === recipeID) {
+        if (recipe._id === recipeID) {
           return data; // Replace the edited recipe
         }
         return recipe;
@@ -51,7 +50,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
       setRecipes(updatedRecipes);
     })
     .catch((err) => console.error(err));
-
   closeModal();
 };
 
