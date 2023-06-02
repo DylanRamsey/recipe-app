@@ -21,9 +21,9 @@ function App() {
       .catch(error => console.error(error));
   }, []);
 
-  /* This all has to do with Pagination. Bug with Pagination right now. Only works after first time trying. Rewatch brads video? */
+  /* This all has to do with Pagination. */
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipePerPage] = useState(12);
+  const [recipePerPage, setRecipePerPage] = useState(12);
   const indexOfLastPost = currentPage * recipePerPage;
   const indexOfFirstPost = indexOfLastPost - recipePerPage;
   const currentRecipes = recipes.slice(indexOfFirstPost, indexOfLastPost);
@@ -46,7 +46,6 @@ function App() {
             selectedCategory={selectedCategory} 
             setRecipes={setRecipes} 
           />
-          {/* This works fine leave it alone */}
           <Pagination 
             recipePerPage={recipePerPage} 
             totalRecipes={recipes.length} 
