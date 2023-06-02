@@ -47,7 +47,7 @@ function RecipeCard({
   }
 
   return (
-    <div className={`w-[21.875rem] px-8 py-6 bg-cream rounded-lg drop-shadow-default max-w-full mt-10 flex flex-col justify-between`}>
+    <div className={`w-[21.875rem] md:w-full  px-6 py-4 xl:px-8 xl:py-6 bg-cream rounded-lg drop-shadow-default max-w-full flex flex-col justify-between`}>
       <div className="flex justify-between items-start">
         <div>
           <h2 className="text-2xl leading-none mb-2">{recipeTitle}</h2>

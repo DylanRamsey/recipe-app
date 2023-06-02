@@ -11,7 +11,7 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory}
 
   return (
     <>
-      <div className="flex justify-between w-[26rem] mx-auto">
+      <div className="sm:flex justify-between w-[26rem] mx-auto mb-8">
         <Button 
           buttonText="add recipe"
           buttonColor="bg-sand-brown"

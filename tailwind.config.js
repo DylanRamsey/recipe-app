@@ -11,12 +11,6 @@ export default {
       '2xl': '2rem', //32px
       '3xl': '3.875rem',
     },
-    theme: {
-      screens: {
-        'tablet': '48rem', // 768px
-        'laptop': '90rem', // 1440px
-      },
-    },
     extend: {
       colors: {
         'sand-brown': '#D1A479',
