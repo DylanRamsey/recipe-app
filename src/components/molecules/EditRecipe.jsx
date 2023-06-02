@@ -56,7 +56,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
       <h2 className="text-2xl">Edit</h2>
       <form onSubmit={editRecipe}>
         <label className="text-xl" htmlFor="recipeName">Recipe Name</label>
-        <p>{modalRecipeData.title}</p>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
           type="text" 
@@ -67,7 +66,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
             setEditRecipeName(event.target.value)
           }}
         />
-        <p>{editRecipeName}</p>
         <label className="text-xl" htmlFor="description">Description</label>
         <textarea 
           className="block drop-shadow-default w-full mt-2 mb-4" 
@@ -79,7 +77,6 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
             setEditRecipeDescription(event.target.value)
           }}               
         />
-        <p>{editRecipeDescription}</p>
         <label className="text-xl" htmlFor="ingredients">Ingredients (Add each with a comma ",")</label>
         <input 
           className="block drop-shadow-default w-full mt-2 mb-4 pb-4" 
