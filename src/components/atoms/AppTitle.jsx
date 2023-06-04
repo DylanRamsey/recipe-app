@@ -3,7 +3,7 @@ function AppTitle() {
   return (
     <div className="flex justify-center mb-8 items-center	gap-8">
       <h1 className="text-2xl lg:text-3xl  text-center uppercase font-semibold">ramsey + turner recipes</h1>
-      <img class="hidden sm:block" src={forkAndKnife} alt="App Logo of a fork and knife" />
+      <img className="hidden sm:block" src={forkAndKnife} alt="App Logo of a fork and knife" />
     </div>
   );
 }

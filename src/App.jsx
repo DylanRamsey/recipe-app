@@ -7,10 +7,13 @@ import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 import Pagination from './components/molecules/Pagination'
 export const RecipeContext = React.createContext();
+export const LoggedInContext = React.createContext();
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
+
   useEffect(() => {
     fetch('http://localhost:3002/api/recipes')
       .then(response => response.json())
@@ -33,25 +36,27 @@ function App() {
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
-        <RecipeContext.Provider value={recipes}>
-          <AppTitle />
-          <UtilityRow 
-            recipes={recipes} 
-            setRecipes={setRecipes} 
-            selectedCategory={selectedCategory} 
-            setSelectedCategory={setSelectedCategory} 
-          />
-          <Recipes 
-            recipes={currentRecipes} 
-            selectedCategory={selectedCategory} 
-            setRecipes={setRecipes} 
-          />
-          <Pagination 
-            recipePerPage={recipePerPage} 
-            totalRecipes={recipes.length} 
-            paginate={paginate} 
-          />
-        </RecipeContext.Provider>
+        <LoggedInContext.Provider value={isLoggedIn}>
+          <RecipeContext.Provider value={recipes}>
+            <AppTitle />
+            <UtilityRow 
+              recipes={recipes} 
+              setRecipes={setRecipes} 
+              selectedCategory={selectedCategory} 
+              setSelectedCategory={setSelectedCategory} 
+            />
+            <Recipes 
+              recipes={currentRecipes} 
+              selectedCategory={selectedCategory} 
+              setRecipes={setRecipes} 
+            />
+            <Pagination 
+              recipePerPage={recipePerPage} 
+              totalRecipes={recipes.length} 
+              paginate={paginate} 
+            />
+          </RecipeContext.Provider>
+        </LoggedInContext.Provider>
       </div>
     </div>
   )
