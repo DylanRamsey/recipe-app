@@ -6,12 +6,11 @@ import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
 import Pagination from './components/molecules/Pagination'
-export const RecipeContext = React.createContext();
 export const LoggedInContext = React.createContext();
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("false");
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
@@ -37,7 +36,6 @@ function App() {
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
         <LoggedInContext.Provider value={isLoggedIn}>
-          <RecipeContext.Provider value={recipes}>
             <AppTitle />
             <UtilityRow 
               recipes={recipes} 
@@ -55,7 +53,6 @@ function App() {
               totalRecipes={recipes.length} 
               paginate={paginate} 
             />
-          </RecipeContext.Provider>
         </LoggedInContext.Provider>
       </div>
     </div>
