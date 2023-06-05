@@ -4,8 +4,6 @@ import Button from "../atoms/Button"
 import EditIcon from "../icons/EditIcon"
 function RecipeCard({
       recipeID,
-      modalRecipeID,
-      setModalRecipeID,
       recipeTitle, 
       recipeDescription,
       recipeIngreds,
@@ -14,7 +12,6 @@ function RecipeCard({
       setViewRecipeModal,
       setRemoveRecipeModal,
       setEditRecipeModal,
-      modalRecipeData,
       setModalRecipeData
     }) 
   {

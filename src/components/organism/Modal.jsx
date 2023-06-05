@@ -2,6 +2,7 @@ import AddRecipe from "../molecules/AddRecipe"
 import ViewRecipe from "../molecules/ViewRecipe"
 import RemoveRecipe from "../molecules/RemoveRecipe"
 import EditRecipe from "../molecules/EditRecipe"
+import Login from "../molecules/Login"
 import closeIcon from "../../assets/icons/modal-close.svg"
 function Modal({
   modalType,
@@ -12,7 +13,9 @@ function Modal({
   setRecipes,
   setAddRecipeModal,
   editRecipeModal,
-  setEditRecipeModal
+  setEditRecipeModal,
+  loginModal, 
+  setLoginModal
 }){
 
   function closeModal() {
@@ -31,6 +34,15 @@ function Modal({
     if(modalType === 'editRecipe'){
       setEditRecipeModal(false)
     }
+
+    if(modalType === 'editRecipe'){
+      setEditRecipeModal(false)
+    }
+
+    if(modalType === 'login'){
+      setLoginModal(false)
+    }    
+
   }
   return (
     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -77,7 +89,13 @@ function Modal({
                       recipes={recipes}
                       setRecipes={setRecipes}                                                 
                     />
-                  }              
+                  }
+                  {modalType === 'login' && 
+                    <Login 
+                      loginModal={loginModal}
+                      setLoginModal={setLoginModal}              
+                    />
+                  }
                 </div>
               </div>
             </div>

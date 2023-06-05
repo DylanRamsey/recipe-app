@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react'
 import Button from '../atoms/Button'
 import { ModalDataContext } from '../organism/Recipes';
+
 function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
   const {modalRecipeData} = React.useContext(ModalDataContext);
   const recipeID = modalRecipeData.id;

@@ -10,7 +10,7 @@ export const LoggedInContext = React.createContext();
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState("false");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
@@ -35,13 +35,14 @@ function App() {
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
-        <LoggedInContext.Provider value={isLoggedIn}>
             <AppTitle />
             <UtilityRow 
               recipes={recipes} 
               setRecipes={setRecipes} 
               selectedCategory={selectedCategory} 
-              setSelectedCategory={setSelectedCategory} 
+              setSelectedCategory={setSelectedCategory}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
             <Recipes 
               recipes={currentRecipes} 
@@ -53,7 +54,6 @@ function App() {
               totalRecipes={recipes.length} 
               paginate={paginate} 
             />
-        </LoggedInContext.Provider>
       </div>
     </div>
   )
