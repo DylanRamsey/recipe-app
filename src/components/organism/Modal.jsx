@@ -3,6 +3,7 @@ import ViewRecipe from "../molecules/ViewRecipe"
 import RemoveRecipe from "../molecules/RemoveRecipe"
 import EditRecipe from "../molecules/EditRecipe"
 import Login from "../molecules/Login"
+import NotLoggedIn from "../molecules/NotLoggedIn"
 import closeIcon from "../../assets/icons/modal-close.svg"
 function Modal({
   modalType,
@@ -14,8 +15,11 @@ function Modal({
   setAddRecipeModal,
   editRecipeModal,
   setEditRecipeModal,
-  loginModal, 
-  setLoginModal
+  loginModal,
+  setLoginModal,
+  setIsLoggedIn,
+  notLoggedInModal,
+  setNotLoggedInModal
 }){
 
   function closeModal() {
@@ -41,6 +45,10 @@ function Modal({
 
     if(modalType === 'login'){
       setLoginModal(false)
+    }
+
+    if(modalType === 'notLoggedIn'){
+      setNotLoggedInModal(false)
     }    
 
   }
@@ -93,9 +101,16 @@ function Modal({
                   {modalType === 'login' && 
                     <Login 
                       loginModal={loginModal}
-                      setLoginModal={setLoginModal}              
+                      setLoginModal={setLoginModal}
+                      setIsLoggedIn={setIsLoggedIn}         
                     />
                   }
+                  {modalType === 'notLoggedIn' && 
+                    <NotLoggedIn 
+                      setNotLoggedInModal={setNotLoggedInModal}
+                      setLoginModal={setLoginModal}
+                    />
+                  }                  
                 </div>
               </div>
             </div>

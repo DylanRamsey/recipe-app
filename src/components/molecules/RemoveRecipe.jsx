@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "../atoms/Button";
 import { ModalDataContext } from '../organism/Recipes';
-function RemoveRecipe({recipes, setRecipes, setRemoveRecipeModal}) {
+function RemoveRecipe({recipes, setRecipes, setRemoveRecipeModal, isLoggedIn}) {
   const {modalRecipeData} = React.useContext(ModalDataContext);
   const recipeID = modalRecipeData.id;
   function closeModal() {

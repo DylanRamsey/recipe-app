@@ -16,7 +16,7 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory,
   }
 
   function logout() {
-
+    setIsLoggedIn(false);
   }
 
   return (

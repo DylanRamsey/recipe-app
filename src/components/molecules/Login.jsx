@@ -1,8 +1,13 @@
 import React from 'react'
 import Button from '../atoms/Button'
-function Login({loginModal, setLoginModal}) {
+function Login({loginModal, setLoginModal, setIsLoggedIn}) {
 
   function closeModal() {
+    setLoginModal(false);
+  }
+
+  function loginSubmit() {
+    setIsLoggedIn(true);
     setLoginModal(false);
   }
 
@@ -39,7 +44,7 @@ function Login({loginModal, setLoginModal}) {
           buttonText="Login"
           buttonColor="bg-sand-brown"
           buttonHover="hover:bg-sand-brown-hov"
-          buttonClick="{editRecipe}"
+          buttonClick={loginSubmit}
         />      
         <Button 
           buttonText="Cancel" 

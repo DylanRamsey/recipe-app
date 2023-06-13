@@ -12,7 +12,10 @@ function RecipeCard({
       setViewRecipeModal,
       setRemoveRecipeModal,
       setEditRecipeModal,
-      setModalRecipeData
+      setModalRecipeData,
+      isLoggedIn,
+      setIsLoggedIn,
+      setNotLoggedInModal
     }) 
   {
 
@@ -38,9 +41,13 @@ function RecipeCard({
   }
 
   function editRecipe() {
-    console.log("I've been clicked");
-    setEditRecipeModal(state=>!state);
-    setModalData();
+    if(isLoggedIn) {
+      setEditRecipeModal(state=>!state);
+      setModalData();
+    } else {
+      setNotLoggedInModal(true);
+      console.log('log in fool')
+    }
   }
 
   return (

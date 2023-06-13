@@ -5,12 +5,13 @@ import Modal from "./Modal"
 
 export const ModalDataContext = React.createContext();
 
-function Recipes({recipes, selectedCategory, setRecipes}) {
+function Recipes({recipes, selectedCategory, setRecipes, isLoggedIn, setIsLoggedIn}) {
 
   /* Modal open and close state. THIS SHOULD BE GOOD TO KEEP. JUST THE STATE OF THE MODALS OPENING AND CLOSING, DOES NOT HANDLE RECIPE STATE  */
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
+  const [notLoggedInModal, setNotLoggedInModal] = useState(false);
   /****************************************/
 
   /* Setting the state for the modal data */
@@ -41,6 +42,10 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
               setModalRecipeData={setModalRecipeData}
               setRemoveRecipeModal={setRemoveRecipeModal}
               setEditRecipeModal={setEditRecipeModal}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              notLoggedInModal={notLoggedInModal}
+              setNotLoggedInModal={setNotLoggedInModal}
             />
           })}
         { viewRecipeModal == true && 
@@ -68,6 +73,14 @@ function Recipes({recipes, selectedCategory, setRecipes}) {
             setEditRecipeModal={setEditRecipeModal}
           />     
         }
+
+        { notLoggedInModal == true && 
+          <Modal
+            modalType="notLoggedIn"
+            notLoggedInModal={notLoggedInModal}
+            setNotLoggedInModal={setNotLoggedInModal}
+          />     
+        }        
       </ModalDataContext.Provider>
     </div>
   )

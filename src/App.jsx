@@ -48,6 +48,8 @@ function App() {
               recipes={currentRecipes} 
               selectedCategory={selectedCategory} 
               setRecipes={setRecipes} 
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
             <Pagination 
               recipePerPage={recipePerPage} 
