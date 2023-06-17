@@ -2,12 +2,17 @@ import { useState } from 'react'
 import Button from '../atoms/Button'
 import Dropdown from '../atoms/Dropdown';
 import Modal from '../organism/Modal';
-function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory, isLoggedIn, setIsLoggedIn}) {
+function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory, isLoggedIn, setIsLoggedIn, setNotLoggedInModal}) {
   const [addRecipeModal, setAddRecipeModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
 
   function addRecipe() {
-    setAddRecipeModal(state=>!state);
+    if(isLoggedIn) {
+      setAddRecipeModal(state=>!state);
+    } else {
+      setNotLoggedInModal(true);
+      console.log('log in fool')
+    }
   }
 
   function login() {
@@ -56,6 +61,7 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory,
           setAddRecipeModal={setAddRecipeModal}
           recipes={recipes}
           setRecipes={setRecipes}
+          isLoggedIn={isLoggedIn}
         />
       }
       {loginModal === true &&      

@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 app.use('/api/recipes', require('./routes/recipeRoutes'));
+app.use('/apiusers', require('./routes/userRoutes'));
 
 
 app.use(errorHandler);

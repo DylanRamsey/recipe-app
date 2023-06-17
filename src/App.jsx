@@ -12,7 +12,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
-
+  const [notLoggedInModal, setNotLoggedInModal] = useState(false);
   useEffect(() => {
     fetch('http://localhost:3002/api/recipes')
       .then(response => response.json())
@@ -43,6 +43,7 @@ function App() {
               setSelectedCategory={setSelectedCategory}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              setNotLoggedInModal={setNotLoggedInModal}
             />
             <Recipes 
               recipes={currentRecipes} 
@@ -50,6 +51,8 @@ function App() {
               setRecipes={setRecipes} 
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              notLoggedInModal={notLoggedInModal}
+              setNotLoggedInModal={setNotLoggedInModal}
             />
             <Pagination 
               recipePerPage={recipePerPage} 

@@ -36,8 +36,13 @@ function RecipeCard({
   }
 
   function removeRecipe() {
+    if(isLoggedIn) {
     setRemoveRecipeModal(state=>!state);
     setModalData();
+    } else {
+      setNotLoggedInModal(true);
+      console.log('log in fool')
+    }
   }
 
   function editRecipe() {

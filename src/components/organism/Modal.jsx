@@ -19,7 +19,8 @@ function Modal({
   setLoginModal,
   setIsLoggedIn,
   notLoggedInModal,
-  setNotLoggedInModal
+  setNotLoggedInModal,
+  isLoggedIn
 }){
 
   function closeModal() {
@@ -75,6 +76,7 @@ function Modal({
                       setAddRecipeModal={setAddRecipeModal}
                       setRecipes={setRecipes}
                       recipes={recipes}
+                      isLoggedIn={isLoggedIn}
                     />
                   }
                   {modalType === 'viewRecipe' &&

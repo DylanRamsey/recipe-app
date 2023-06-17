@@ -1,6 +1,6 @@
 import Button from "../atoms/Button"
 import { useState } from 'react'
-function AddRecipe({setAddRecipeModal, recipes, setRecipes}) {
+function AddRecipe({setAddRecipeModal, recipes, setRecipes, isLoggedIn}) {
   const [addRecipeName, setAddRecipeName] = useState('');
   const [addRecipeDesc, setAddRecipeDesc] = useState('');
   const [addRecipeIngreds, setAddRecipeIngreds] = useState('');

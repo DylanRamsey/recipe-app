@@ -5,13 +5,13 @@ import Modal from "./Modal"
 
 export const ModalDataContext = React.createContext();
 
-function Recipes({recipes, selectedCategory, setRecipes, isLoggedIn, setIsLoggedIn}) {
+function Recipes({recipes, selectedCategory, setRecipes, isLoggedIn, setIsLoggedIn, notLoggedInModal, setNotLoggedInModal}) {
 
   /* Modal open and close state. THIS SHOULD BE GOOD TO KEEP. JUST THE STATE OF THE MODALS OPENING AND CLOSING, DOES NOT HANDLE RECIPE STATE  */
   const [viewRecipeModal, setViewRecipeModal] = useState(false);
   const [removeRecipeModal, setRemoveRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
-  const [notLoggedInModal, setNotLoggedInModal] = useState(false);
+
   /****************************************/
 
   /* Setting the state for the modal data */
