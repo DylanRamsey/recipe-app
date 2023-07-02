@@ -1,81 +1,28 @@
 const express = require('express');
+const colors = require('colors');
+const dotenv = require('dotenv').config();
+const {errorHandler} = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
+const port = process.env.PORT;
 const cors = require('cors');
+
+
+connectDB();
+
 const app = express();
 app.use(cors());
+
+
+
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.json());
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid'); // For generating unique IDs
+app.use('/api/recipes', require('./routes/recipeRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
-let recipes = [];
 
-try {
-  const recipesData = fs.readFileSync('./db/recipes.json', 'utf8');
-  recipes = JSON.parse(recipesData).recipes;
-} catch (err) {
-  console.error(err);
-}
+app.use(errorHandler);
 
-app.get('/api/recipes', (req, res, ) => {
-  const recipes = JSON.parse(fs.readFileSync('./db/recipes.json'));
-  res.json(recipes);
-});
-
-app.post('/api/recipes', (req, res) => {
-  const newRecipe = req.body;
-  // generate a unique id for the new recipe using uuidv4
-  const { v4: uuidv4 } = require('uuid');
-  newRecipe.id = uuidv4();
-  // add the new recipe to the existing recipes array
-  recipes.push(newRecipe);
-  // write the updated array of recipes to the recipes.json file
-  fs.writeFile('./db/recipes.json', JSON.stringify({ recipes }), (err) => {
-    if (err) throw err;
-    // respond with the newly added recipe and a 201 status code
-    res.status(201).json(newRecipe);
-  });
-});
-
-app.delete('/api/recipes/:id', (req, res) => {
-  const id = req.params.id;
-  const index = recipes.findIndex((recipe) => recipe.id === id);
-
-  if (index !== -1) {
-    recipes.splice(index, 1);
-    fs.writeFile('./db/recipes.json', JSON.stringify({ recipes }), (err) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Error deleting recipe');
-      } else {
-        res.send('Recipe deleted');
-      }
-    });
-  } else {
-    res.status(404).send('Recipe not found');
-  }
-});
-
-app.put('/api/recipes/:id', (req, res) => {
-  const id = req.params.id;
-  const { name, ingredients, steps, category } = req.body;
-  const index = recipes.findIndex((recipe) => recipe.id === id);
-  if (index === -1) {
-    res.status(404).send('Recipe not found');
-  } else {
-    recipes[index].name = name;
-    recipes[index].ingredients = ingredients;
-    recipes[index].steps = steps;
-    recipes[index].category = category;
-    fs.writeFile('db/recipes.json', JSON.stringify({ recipes }), (err) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Error updating recipe');
-      } else {
-        res.status(200).send('Recipe updated successfully');
-      }
-    });
-  }
-});
-
-app.listen(3001, () => {
-  console.log('Server running on port 3001');
-});
+app.listen(port, () => {
+  console.log(`Server strated on port ${port}`)
+})

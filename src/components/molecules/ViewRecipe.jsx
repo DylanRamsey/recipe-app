@@ -8,6 +8,8 @@ function ViewRecipe({setViewRecipeModal}) {
     setViewRecipeModal(false);
   }
 
+  const recipeSteps = modalRecipeData.steps;
+
   return (
     <div>
       <h2 className="text-2xl leading-tight mb-3 capitalize">{modalRecipeData.title}</h2>

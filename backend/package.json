@@ -4,7 +4,7 @@
   "description": "Backend API for React Recipes App",
   "main": "api.js",
   "scripts": {
-    "start": "node api2.js"
+    "start": "node api.js"
   },
   "author": "Dylan Ramsey",
   "license": "ISC",

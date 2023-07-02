@@ -16,3 +16,4 @@ These are my actual family recipes we use in our house, try one out for a yummy 
 - Logged in users are ble to delete recipes
 - All users are able to view each recipes
 - Filter recipe based on category functionality
+- Pagination Functionality

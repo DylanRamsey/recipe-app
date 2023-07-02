@@ -26,7 +26,7 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory,
 
   return (
     <>
-      <div className="sm:flex text-center justify-between w-[32rem] mx-auto mb-8">
+      <div className="sm:flex text-center justify-between sm:w-[33rem] mx-auto mb-8">
         {isLoggedIn === false && 
           <Button 
             buttonText="Login"
