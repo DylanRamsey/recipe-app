@@ -26,23 +26,23 @@ function UtilityRow({recipes, setRecipes, selectedCategory, setSelectedCategory,
 
   return (
     <>
-      <div className="sm:flex justify-between w-[32rem] mx-auto mb-8">
-      {isLoggedIn === false && 
-        <Button 
-          buttonText="Login"
-          buttonColor="bg-sand-brown"
-          buttonHover="hover:bg-sand-brown-hov"
-          buttonClick={login}
-        />
-      }
-      {isLoggedIn === true && 
-        <Button 
-          buttonText="Log Out"
-          buttonColor="bg-sand-brown"
-          buttonHover="hover:bg-sand-brown-hov"
-          buttonClick={logout}
-        />
-      }      
+      <div className="sm:flex text-center justify-between w-[32rem] mx-auto mb-8">
+        {isLoggedIn === false && 
+          <Button 
+            buttonText="Login"
+            buttonColor="bg-sand-brown"
+            buttonHover="hover:bg-sand-brown-hov"
+            buttonClick={login}
+          />
+        }
+        {isLoggedIn === true && 
+          <Button 
+            buttonText="Log Out"
+            buttonColor="bg-sand-brown"
+            buttonHover="hover:bg-sand-brown-hov"
+            buttonClick={logout}
+          />
+        }      
         <Button 
           buttonText="add recipe"
           buttonColor="bg-sand-brown"
