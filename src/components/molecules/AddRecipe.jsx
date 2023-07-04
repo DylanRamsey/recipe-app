@@ -20,7 +20,7 @@ function AddRecipe({setAddRecipeModal, recipes, setRecipes, isLoggedIn}) {
       category: addRecipeCategory,
     };
     console.log('Sending request to server:', newRecipe);
-    fetch('http://localhost:3002/api/recipes', {
+    fetch(`${import.meta.env.VITE_API_URL}/recipes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

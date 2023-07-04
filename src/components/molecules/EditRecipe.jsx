@@ -29,7 +29,7 @@ function EditRecipe({ setEditRecipeModal, setRecipes, recipes }) {
 
     console.log(`Sending request to server:${editedRecipe}`)
 
-    fetch(`http://localhost:3002/api/recipes/${recipeID}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/recipes/${recipeID}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

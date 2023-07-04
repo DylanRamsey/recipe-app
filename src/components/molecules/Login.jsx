@@ -26,7 +26,7 @@ function Login({loginModal, setLoginModal, setIsLoggedIn}) {
       password: loginPass,
     };
     console.log('Sending request to server:', userLogin);
-    fetch('http://localhost:3002/api/users/login', {
+    fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

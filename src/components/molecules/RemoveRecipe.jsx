@@ -9,7 +9,7 @@ function RemoveRecipe({recipes, setRecipes, setRemoveRecipeModal, isLoggedIn}) {
   }
 
   const removeRecipeConfirmed = (id) => {
-    fetch(`http://localhost:3002/api/recipes/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/recipes/${id}`, {
       method: 'DELETE'
     })
       .then(response => {
