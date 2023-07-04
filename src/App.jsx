@@ -14,7 +14,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [notLoggedInModal, setNotLoggedInModal] = useState(false);
   useEffect(() => {
-    fetch('http://localhost:3002/api/recipes')
+    fetch(`${import.meta.env.VITE_API_URL}/recipes`)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -35,6 +35,7 @@ function App() {
   return (
     <div data-element="app">
       <div data-element="app__wrapper" className="App container mx-auto mt-16">
+      
             <AppTitle />
             <UtilityRow 
               recipes={recipes} 

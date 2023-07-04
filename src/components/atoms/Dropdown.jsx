@@ -6,7 +6,7 @@ function Dropdown({recipes, selectedCategory, setSelectedCategory}) {
 
   return (
     <>
-      <form class="mt-4 sm:mt-0" action="">
+      <form className="mt-4 sm:mt-0" action="">
         <select data-element="select-dropdown" value={selectedCategory} onChange={handleCategoryChange} className="drop-shadow-btn px-2 py-2 h-10 rounded-md capitalize w-64 max-w-full" name="">
           <option value="All">All</option>
           {categories.map((category) => (
