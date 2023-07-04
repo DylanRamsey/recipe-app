@@ -1,4 +1,4 @@
-import forkAndKnife from "/../../assets/icons/fork-and-knife.svg"
+import forkAndKnife from "../../assets/icons/fork-and-knife.svg"
 function AppTitle() {
   return (
     <div className="flex justify-center mb-8 items-center	gap-8">

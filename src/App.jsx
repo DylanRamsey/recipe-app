@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react'
 import { useEffect } from 'react'
-import "/rt-recipes/src/assets/sass/main.scss"
+import "./assets/sass/main.scss"
 import AppTitle from './components/atoms/AppTitle'
 import UtilityRow from './components/molecules/UtilityRow'
 import Recipes from './components/organism/Recipes'
