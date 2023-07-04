@@ -31,17 +31,17 @@ const setRecipe = asyncHandler(async (req, res) => {
 
 const updateRecipe = asyncHandler(async (req, res) => {
   try {
-  const recipeRecord = await Recipe.findById(req.params.id)
-  if(!recipeRecord) {
-    res.status(400)
-    throw new Error('Recipe not found')
-  }
-  
-  const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  })
+    const recipeRecord = await Recipe.findById(req.params.id)
+    if(!recipeRecord) {
+      res.status(400)
+      throw new Error('Recipe not found')
+    }
+    
+    const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    })
 
-  res.status(200).json(updatedRecipe)
+    res.status(200).json(updatedRecipe)
   } catch (err) {
     console.error(err);
   }
@@ -51,15 +51,13 @@ const updateRecipe = asyncHandler(async (req, res) => {
 // @route DELETE /api/recipes/:id
 const deleteRecipe = asyncHandler(async (req, res) => {
   try {
-  const recipeToDelete = await Recipe.findById(req.params.id)
-  if(!recipeToDelete) {
-    res.status(400)
-    throw new Error('Recipe not found')
-  }
-
-  await recipeToDelete.deleteOne()
-
-  res.status(200).json({ id: req.params.id })
+    const recipeToDelete = await Recipe.findById(req.params.id)
+    if(!recipeToDelete) {
+      res.status(400)
+      throw new Error('Recipe not found')
+    }
+    await recipeToDelete.deleteOne()
+    res.status(200).json({ id: req.params.id })
   } catch (err) {
     console.error(err);
   }
