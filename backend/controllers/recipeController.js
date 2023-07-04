@@ -3,8 +3,13 @@ const Recipe = require('../models/recipeModel');
 // @desc GET recipes
 // @route GET /api/recipes
 const getRecipes = asyncHandler(async (req, res) => {
-  const recipes = await Recipe.find()
-  res.status(200).json(recipes)
+  try {
+    const recipes = await Recipe.find()
+    res.status(200).json(recipes)
+  }
+  catch (err) {
+    console.error(err);
+  }
 })
 
 // @desc SET recipes
@@ -25,6 +30,7 @@ const setRecipe = asyncHandler(async (req, res) => {
 // @route PUT /api/recipes/:id
 
 const updateRecipe = asyncHandler(async (req, res) => {
+  try {
   const recipeRecord = await Recipe.findById(req.params.id)
   if(!recipeRecord) {
     res.status(400)
@@ -36,11 +42,15 @@ const updateRecipe = asyncHandler(async (req, res) => {
   })
 
   res.status(200).json(updatedRecipe)
+  } catch (err) {
+    console.error(err);
+  }
 })
 
 // @desc Delete recipes
 // @route DELETE /api/recipes/:id
 const deleteRecipe = asyncHandler(async (req, res) => {
+  try {
   const recipeToDelete = await Recipe.findById(req.params.id)
   if(!recipeToDelete) {
     res.status(400)
@@ -50,6 +60,9 @@ const deleteRecipe = asyncHandler(async (req, res) => {
   await recipeToDelete.deleteOne()
 
   res.status(200).json({ id: req.params.id })
+  } catch (err) {
+    console.error(err);
+  }
 })
 
 module.exports = {
